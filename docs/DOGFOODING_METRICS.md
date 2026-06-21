@@ -20,6 +20,40 @@ Those claims should be tested during real usage.
 | Missing info friction | Whether anti-hallucination rules block too often |
 | Cross-AI continuation | Whether another AI can continue from docs alone |
 
+## Minimum validation window
+
+Do not change AISDD rules based on one or two tasks.
+
+Before drawing conclusions or recalibrating core rules, collect at least:
+
+| Requirement | Minimum |
+|---|---:|
+| Real tasks completed | 10 |
+| Different task types | 3 |
+| Session handoffs | 3 |
+| Structural decisions | 2 |
+| Cross-AI continuation tests | 1 |
+
+Recommended task types:
+
+- bug fix;
+- small feature;
+- refactor;
+- documentation update;
+- test or validation task.
+
+## Early exception rule
+
+A rule may be changed before the minimum window only if it causes clear damage, such as:
+
+- repeated data loss risk;
+- repeated wrong architecture;
+- repeated broken contracts;
+- repeated security or privacy risk;
+- obvious workflow deadlock.
+
+Minor friction should be logged, not immediately used to change the framework.
+
 ## 1. Handoff update rate
 
 Track how often `docs/07_HANDOFF.md` is updated before changing sessions, tools, or tasks.
@@ -82,6 +116,8 @@ Estimate how much context is needed before and after AISDD adoption.
 
 This does not need to be exact at first.
 
+The goal is directional honesty, not perfect token accounting.
+
 ### Simple measurement
 
 For comparable tasks, record:
@@ -89,6 +125,35 @@ For comparable tasks, record:
 | Date | Project | Task type | Before AISDD context | AISDD context | Result |
 |---|---|---|---:|---:|---|
 | TODO | TODO | Bug fix / feature / refactor | TODO | TODO | TODO |
+
+### Simple token proxy
+
+When exact token counts are unavailable, estimate tokens from text size.
+
+Use:
+
+```txt
+estimated_tokens = total_characters / 4
+```
+
+This is approximate, but useful for comparing similar tasks.
+
+### What to count
+
+Count all text sent to the AI for the task:
+
+- task prompt;
+- loaded AISDD docs;
+- pasted source files;
+- copied errors or logs;
+- manual project explanation;
+- handoff or recap text.
+
+### Context log format
+
+| Date | Project | Task | Prompt chars | Docs chars | Files/logs chars | Estimated tokens | Notes |
+|---|---|---|---:|---:|---:|---:|---|
+| TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
 
 ### What to compare
 
@@ -148,6 +213,12 @@ The AI should stop only when missing information could cause:
 
 The AI may proceed with explicit assumptions when the decision is low-risk and easy to change later.
 
+### Recalibration rule
+
+Do not recalibrate `MISSING INFO` from isolated frustration.
+
+Recalibrate only after the minimum validation window, unless the early exception rule applies.
+
 ## 5. Cross-AI continuation test
 
 Test whether a different AI can continue the project using repository docs only.
@@ -192,6 +263,14 @@ TODO
 ## Period
 
 TODO
+
+## Validation window
+
+- Real tasks completed: TODO
+- Different task types: TODO
+- Session handoffs: TODO
+- Structural decisions: TODO
+- Cross-AI continuation tests: TODO
 
 ## Summary
 
