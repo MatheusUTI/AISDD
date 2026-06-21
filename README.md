@@ -45,7 +45,27 @@ Update affected docs and docs/07_HANDOFF.md before finishing.
 
 The rest of AISDD is added only when the project needs it.
 
-See: [`docs/CORE_VS_ADVANCED.md`](docs/CORE_VS_ADVANCED.md)
+See:
+
+- [`docs/ADOPTION_PACKAGES.md`](docs/ADOPTION_PACKAGES.md)
+- [`docs/CORE_VS_ADVANCED.md`](docs/CORE_VS_ADVANCED.md)
+
+## Adoption packages
+
+Do not copy the whole AISDD repository into your project.
+
+Choose the smallest package that reduces the next real pain.
+
+| Package | Use when | What you copy or maintain |
+|---|---|---|
+| Core Kit | You want control today | 4 core docs |
+| Starter Kit | Existing simple project | Full docs template, but fill only Core first |
+| Recovery Kit | Existing messy project | Snapshot docs and Recovery prompt |
+| Standard Kit | Long-running project | Full project docs, filled gradually |
+| Mature Kit | Multi-AI, releases, contributors | Metrics, maintenance, staleness checks |
+| Framework Maintainer Layer | Improving AISDD itself | Full repository |
+
+See: [`docs/ADOPTION_PACKAGES.md`](docs/ADOPTION_PACKAGES.md)
 
 ## Prompt Maturity Levels
 
@@ -70,6 +90,7 @@ See: [`docs/PROMPT_MATURITY_LEVELS.md`](docs/PROMPT_MATURITY_LEVELS.md)
 | You only have a rough project idea | [`docs/PROJECT_DEFINITION.md`](docs/PROJECT_DEFINITION.md) |
 | You already have a simple project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
 | You already have a complex or messy project | [`docs/RECOVERY_MODE.md`](docs/RECOVERY_MODE.md) |
+| You want to know what to copy | [`docs/ADOPTION_PACKAGES.md`](docs/ADOPTION_PACKAGES.md) |
 | You want real-project usage guidance | [`docs/REAL_PROJECT_PLAYBOOKS.md`](docs/REAL_PROJECT_PLAYBOOKS.md) |
 | You want the full onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
 | You want to validate AISDD in practice | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
