@@ -16,6 +16,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 
 | Item | Why it matters | Status |
 |---|---|---|
+| Recovery Mode | Makes AISDD usable in projects that already exist and are becoming complex | Added |
 | Complete practical example project | Helps users understand AISDD by copying a real example | Planned |
 | Compliance checklist | Makes adoption reviewable and repeatable | Planned |
 | Documentation maintenance guide | Prevents non-loaded docs from becoming stale | Added |
@@ -26,6 +27,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 
 | Item | Why it matters | Status |
 |---|---|---|
+| Recovery Mode dogfooding report | Validates whether AISDD can stabilize a real mid-project adoption | Planned |
 | Release and versioning policy | Defines how AISDD changes are published | Planned |
 | Governance rules for core changes | Clarifies what counts as sufficient validation | Added initial policy |
 | More dogfooding reports | Replaces assumptions with usage evidence | Planned |
@@ -45,10 +47,11 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 The current focus is:
 
 1. Make AISDD easy to adopt.
-2. Validate AISDD through real projects.
-3. Reduce documentation maintenance friction.
-4. Improve examples.
-5. Keep the framework vendor-independent and stack-independent.
+2. Support both new projects and already-started projects.
+3. Validate AISDD through real projects.
+4. Reduce documentation maintenance friction.
+5. Improve examples.
+6. Keep the framework vendor-independent and stack-independent.
 
 ## Change policy
 
