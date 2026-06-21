@@ -2,7 +2,48 @@
 
 **AISDD** is a universal framework for building long-term software projects with AI assistance.
 
-It is designed to be:
+It is designed to keep AI-assisted projects predictable, traceable, and easy to continue across different AI tools.
+
+## Quick start
+
+Use AISDD in an existing project in about five minutes:
+
+```bash
+mkdir -p docs
+cp -R templates/docs/* your-project/docs/
+```
+
+Then fill only these starter files first:
+
+1. `docs/00_PROJECT_RULES.md` — permanent rules and forbidden changes.
+2. `docs/04_NEXT_TASK.md` — one task only.
+3. `docs/07_HANDOFF.md` — short continuity summary.
+4. `docs/09_FILE_INDEX.md` — where important files are.
+
+Start the AI with:
+
+```txt
+This project follows AISDD.
+Read docs/START_HERE.md first.
+Execute only docs/04_NEXT_TASK.md.
+If critical information is missing, answer MISSING INFO.
+```
+
+For the shortest adoption path, see [`docs/QUICK_START.md`](docs/QUICK_START.md).
+
+## Adoption levels
+
+AISDD does not require perfect documentation before the first task.
+
+| Level | Use when | Required effort |
+|---|---|---|
+| Starter | You want control now | Fill 4 files |
+| Standard | The project will continue for weeks/months | Fill all core docs gradually |
+| Mature | Multiple AIs or contributors work on the project | Add ADRs, tests, compliance checks, and examples |
+
+## What AISDD is
+
+AISDD is:
 
 - language-independent;
 - stack-independent;
