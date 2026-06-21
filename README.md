@@ -38,6 +38,10 @@ AISDD is:
 
 Compatible tools include ChatGPT, Gemini, Claude, Cursor, Windsurf, Copilot, local agents, and future AI systems.
 
+## Languages
+
+- [Português brasileiro](docs/pt-BR/README.md)
+
 ## Start here
 
 Choose the path that matches your situation:
@@ -404,7 +408,7 @@ The current focus is:
 Planned improvements:
 
 - complete practical example project;
-- Portuguese documentation entrypoint;
+- Portuguese documentation expansion;
 - compliance checklist;
 - release and versioning policy;
 - stronger automation around documentation checks;
