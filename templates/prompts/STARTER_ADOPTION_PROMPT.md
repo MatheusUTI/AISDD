@@ -1,6 +1,10 @@
 # AISDD Starter Adoption Prompt
 
-Use this prompt when adopting AISDD in a new or existing project.
+Use this prompt when adopting AISDD quickly in a new or existing project.
+
+This is a thin Starter wrapper around the universal AISDD start behavior.
+
+Use it when you want to start with only the Core AISDD files instead of the full documentation set.
 
 ```txt
 This project follows AISDD.
@@ -15,36 +19,26 @@ Then read only the minimum starter context:
 
 Execute only docs/04_NEXT_TASK.md.
 
-Rules:
+Follow the universal AISDD behavior:
 
-- Do not invent missing files, contracts, endpoints, tables, schemas, or business rules.
-- Do not rewrite unrelated files.
-- Do not change the stack unless explicitly required.
-- Preserve existing behavior.
-- Update affected documentation.
-- Update docs/07_HANDOFF.md before finishing.
+- one task only;
+- no invented files, entities, endpoints, tables, contracts, schemas, or business rules;
+- preserve existing behavior;
+- update affected documentation;
+- update docs/07_HANDOFF.md before finishing;
+- use the standard AISDD response format.
 
 If critical information is missing, answer only:
 
 MISSING INFO
-
-Return the response using this structure:
-
-## Objective
-
-## Files changed
-
-## Contract impact
-
-## FACTS
-
-## ASSUMPTIONS
-
-## UNKNOWNS
-
-## RISKS
-
-## Acceptance status
-
-## Updated handoff
 ```
+
+## Maintenance note
+
+The canonical AI behavior lives in:
+
+```txt
+templates/prompts/UNIVERSAL_AI_START_PROMPT.md
+```
+
+This prompt should stay short and Starter-specific to avoid duplicated rules drifting over time.
