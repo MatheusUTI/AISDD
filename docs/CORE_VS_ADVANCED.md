@@ -1,0 +1,88 @@
+# AISDD Core vs Advanced
+
+AISDD should be useful without forcing users to adopt the whole framework at once.
+
+This document separates what is essential from what is optional, advanced, or maturity-driven.
+
+## Core AISDD
+
+Use this when you want to start today.
+
+| Artifact | Purpose |
+|---|---|
+| `docs/00_PROJECT_RULES.md` | Permanent rules, stack, conventions, and forbidden changes |
+| `docs/04_NEXT_TASK.md` | One executable task only |
+| `docs/07_HANDOFF.md` | Short continuity summary between sessions and AIs |
+| `docs/09_FILE_INDEX.md` | Map of important files and responsibilities |
+
+Core AISDD answers four questions:
+
+1. What rules must the AI follow?
+2. What is the next task?
+3. What should the next AI session know?
+4. Where are the important files?
+
+## Core AI behavior
+
+Every AI cycle should also preserve:
+
+- one task per cycle;
+- minimum necessary context;
+- no silent invention;
+- explicit `FACTS`, `ASSUMPTIONS`, `UNKNOWNS`, and `RISKS`;
+- updated handoff before the cycle ends.
+
+## Safety layer
+
+Use this when regressions, hallucinations, or unclear requirements become risky.
+
+| Artifact | Purpose |
+|---|---|
+| `docs/05_ACCEPTANCE_CHECKS.md` | Required checks before accepting a change |
+| `docs/08_KNOWN_ISSUES.md` | Bugs, risks, limitations, and technical debt |
+| `docs/10_TEST_CHECKLIST.md` | Repeatable manual regression checklist |
+| `framework/AISDD_ANTI_HALLUCINATION.md` | Rules for missing information and hallucination prevention |
+| `framework/AISDD_FILE_GROWTH_CONTROL.md` | File growth limits and extraction triggers |
+
+## Product and architecture layer
+
+Use this when the project has real business rules, modules, contracts, or integration risks.
+
+| Artifact | Purpose |
+|---|---|
+| `docs/01_PRODUCT_SPEC.md` | Product scope, users, features, and business rules |
+| `docs/02_ARCHITECTURE.md` | Architecture, modules, contracts, flows, and boundaries |
+| `docs/03_CURRENT_STATE.md` | Real project state, not the idealized state |
+| `docs/06_DECISIONS_LOG.md` | ADR-style decision history |
+
+## Recovery layer
+
+Use this when the project already exists and was not started with AISDD.
+
+| Artifact | Purpose |
+|---|---|
+| `docs/RECOVERY_MODE.md` | Recovery path for existing complex projects |
+| `templates/prompts/RECOVERY_MODE_PROMPT.md` | Prompt for creating the first factual snapshot |
+| `docs/DOGFOODING_METRICS.md` | Snapshot accuracy metric |
+
+Recovery should start with a read-only factual snapshot before any code change.
+
+## Maturity layer
+
+Use this when the project becomes long-running, team-based, public, or heavily AI-assisted.
+
+| Artifact | Purpose |
+|---|---|
+| `docs/DOCUMENTATION_MAINTENANCE.md` | Periodic audit rules and stale-doc prevention |
+| `docs/DOGFOODING_METRICS.md` | Metrics for validating AISDD in practice |
+| `scripts/check-aisdd-docs.py` | Checks required docs exist |
+| `scripts/check-aisdd-staleness.py` | Detects simple stale-documentation signals |
+| `docs/ROADMAP.md` | Framework priorities |
+
+## Simple rule
+
+Start with Core.
+
+Add the next layer only when the project pain requires it.
+
+AISDD should reduce chaos, not create ceremony.
