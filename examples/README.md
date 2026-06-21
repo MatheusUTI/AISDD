@@ -1,8 +1,8 @@
 # AISDD Examples
 
-This directory contains example project structures.
+This directory contains example project structures and dogfooding cases.
 
-Current examples:
+## Minimal structure examples
 
 - `android-app`
 - `web-app`
@@ -10,3 +10,7 @@ Current examples:
 - `desktop-app`
 
 These examples are intentionally minimal and technology-neutral.
+
+## Dogfooding cases
+
+- `casa-em-dia-recovery-dogfooding` — public Recovery Mode validation case based on a real Android project, without proprietary source code.
