@@ -2,7 +2,7 @@
 
 Use this document to validate whether AISDD works in real projects.
 
-The goal is to measure practical friction, context savings, handoff quality, AI portability, and Recovery Mode accuracy.
+The goal is to measure practical friction, context savings, handoff quality, AI portability, Recovery Mode accuracy, and prompt maturity.
 
 ## Why this exists
 
@@ -17,6 +17,7 @@ Those claims should be tested during real usage.
 | Handoff update rate | Whether continuity docs are realistic to maintain |
 | Decision log update rate | Whether ADR discipline survives real work |
 | Context size estimate | Whether AISDD reduces repeated context |
+| Prompt maturity level | Whether manual prompt context is decreasing |
 | Missing info friction | Whether anti-hallucination rules block too often |
 | Cross-AI continuation | Whether another AI can continue from docs alone |
 | Recovery snapshot accuracy | Whether Recovery Mode maps the real project state correctly |
@@ -35,6 +36,7 @@ Before drawing conclusions or recalibrating core rules, collect at least:
 | Structural decisions | 2 |
 | Cross-AI continuation tests | 1 |
 | Recovery snapshots reviewed | 1 |
+| Prompt maturity attempts | 3 |
 
 Recommended task types:
 
@@ -183,7 +185,37 @@ Warning sign:
 
 - The AI still requires long manual context every cycle.
 
-## 4. Missing info friction
+## 4. Prompt maturity level
+
+Prompt Maturity Level, or PML, measures how little manual prompt context is needed.
+
+See:
+
+```txt
+docs/PROMPT_MATURITY_LEVELS.md
+```
+
+### Log format
+
+| Date | Project | Task | Attempted PML | Successful PML | Notes |
+|---|---|---|---:|---:|---|
+| TODO | TODO | TODO | TODO | TODO | TODO |
+
+### Signal
+
+Good sign:
+
+- Successful PML increases over time.
+- Similar tasks need shorter prompts.
+- The AI can execute from `START_HERE.md` and `04_NEXT_TASK.md` without repeated manual recap.
+
+Warning sign:
+
+- Prompts keep getting longer.
+- The user must repeatedly explain the same project context.
+- The AI cannot resolve task IDs or next task from repository docs.
+
+## 5. Missing info friction
 
 Track when the `MISSING INFO` rule helps and when it blocks unnecessarily.
 
@@ -221,7 +253,7 @@ Do not recalibrate `MISSING INFO` from isolated frustration.
 
 Recalibrate only after the minimum validation window, unless the early exception rule applies.
 
-## 5. Cross-AI continuation test
+## 6. Cross-AI continuation test
 
 Test whether a different AI can continue the project using repository docs only.
 
@@ -251,7 +283,7 @@ AI-B should correctly identify:
 - important files;
 - relevant constraints.
 
-## 6. Recovery snapshot accuracy
+## 7. Recovery snapshot accuracy
 
 Recovery Mode has a different primary risk: the AI may map the existing project incorrectly.
 
@@ -304,7 +336,7 @@ Warning sign:
 
 - The AI invents architecture, overstates completeness, misses known bugs, or treats assumptions as facts.
 
-## 7. Dogfooding report template
+## 8. Dogfooding report template
 
 Use this after testing AISDD on a real project.
 
@@ -327,6 +359,7 @@ TODO
 - Structural decisions: TODO
 - Cross-AI continuation tests: TODO
 - Recovery snapshots reviewed: TODO
+- Prompt maturity attempts: TODO
 
 ## Summary
 
@@ -347,6 +380,7 @@ TODO
 | Handoff update rate | TODO |
 | Decision log update rate | TODO |
 | Context size estimate | TODO |
+| Prompt maturity level | TODO |
 | Missing info friction | TODO |
 | Cross-AI continuation | TODO |
 | Recovery snapshot accuracy | TODO |
@@ -358,4 +392,4 @@ TODO
 
 ## Main rule
 
-AISDD should be judged by real continuity, not by how good the documentation looks.
+AISDD should be judged by real continuity and decreasing manual context, not by how good the documentation looks.
