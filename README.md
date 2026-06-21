@@ -7,76 +7,33 @@ It helps developers use AI tools without losing project continuity, traceability
 > The AI conversation is temporary.  
 > The repository is the source of truth.
 
-## Why AISDD exists
+## AISDD in 60 seconds
 
-AI can accelerate software development, but unmanaged AI-assisted work often creates new problems:
+AISDD keeps AI-assisted development grounded by moving project memory out of chat and into versioned repository files.
 
-- excessive chat context;
-- high token usage;
-- lost continuity between sessions;
-- hallucinated files, APIs, tables, or business rules;
-- unnecessary rewrites;
-- regression bugs;
-- undocumented decisions;
-- difficulty switching between AI tools;
-- fragile long-term maintenance.
+1. Write the project rules in the repo.
+2. Give the AI one task at a time.
+3. Force the AI to separate facts, assumptions, unknowns, and risks.
+4. Update the handoff before ending the session.
+5. Continue with any compatible AI using the same repository context.
 
-AISDD turns AI-assisted development into a controlled, documentation-driven workflow.
+## Start today: ignore 80% of the framework
 
-## What AISDD is
-
-AISDD is:
-
-- language-independent;
-- stack-independent;
-- vendor-independent;
-- reusable across projects;
-- resistant to hallucinations;
-- optimized for low context and token usage;
-- suitable for long-running projects;
-- compatible with multiple AIs working on the same repository.
-
-Compatible tools include ChatGPT, Gemini, Claude, Cursor, Windsurf, Copilot, local agents, and future AI systems.
-
-## Languages
-
-- [Português brasileiro](docs/pt-BR/README.md)
-- [Português brasileiro — Quick Start](docs/pt-BR/QUICK_START.md)
-
-## Start here
-
-Choose the path that matches your situation:
-
-| Situation | Start with |
-|---|---|
-| You only have a rough project idea | [`docs/PROJECT_DEFINITION.md`](docs/PROJECT_DEFINITION.md) |
-| You already have a simple project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
-| You already have a complex or messy project | [`docs/RECOVERY_MODE.md`](docs/RECOVERY_MODE.md) |
-| You want the complete onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
-| You want to validate AISDD in real usage | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
-| You want to understand the core method | [`framework/AISDD_MANIFESTO.md`](framework/AISDD_MANIFESTO.md) |
-| You want to prevent stale documentation | [`docs/DOCUMENTATION_MAINTENANCE.md`](docs/DOCUMENTATION_MAINTENANCE.md) |
-| You want to see priorities | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
-
-## The shortest adoption path
-
-For an existing project, copy the documentation template into your repository:
+To start using AISDD today, copy the docs template and fill only four files:
 
 ```bash
 mkdir -p docs
 cp -R templates/docs/* your-project/docs/
 ```
 
-Then fill only these starter files first:
-
-| File | Purpose |
+| Core file | Purpose |
 |---|---|
-| `docs/00_PROJECT_RULES.md` | Permanent rules, stack, conventions, forbidden changes |
+| `docs/00_PROJECT_RULES.md` | Stack, permanent rules, conventions, forbidden changes |
 | `docs/04_NEXT_TASK.md` | One executable task only |
-| `docs/07_HANDOFF.md` | Short continuity summary |
-| `docs/09_FILE_INDEX.md` | Map of important files and responsibilities |
+| `docs/07_HANDOFF.md` | Short continuity summary for the next session or AI |
+| `docs/09_FILE_INDEX.md` | Important files and responsibilities |
 
-Start the AI with:
+Then start the AI with:
 
 ```txt
 This project follows AISDD.
@@ -86,114 +43,128 @@ If critical information is missing, answer MISSING INFO.
 Update affected docs and docs/07_HANDOFF.md before finishing.
 ```
 
-The full starter prompt is available at:
+The rest of AISDD is added only when the project needs it.
 
-```txt
-templates/prompts/STARTER_ADOPTION_PROMPT.md
-```
+See: [`docs/CORE_VS_ADVANCED.md`](docs/CORE_VS_ADVANCED.md)
 
-## Starting from only an idea
+## Choose your path
 
-If the project does not exist yet, use the Project Definition Wizard:
+| Situation | Start with |
+|---|---|
+| You only have a rough project idea | [`docs/PROJECT_DEFINITION.md`](docs/PROJECT_DEFINITION.md) |
+| You already have a simple project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
+| You already have a complex or messy project | [`docs/RECOVERY_MODE.md`](docs/RECOVERY_MODE.md) |
+| You want real-project usage guidance | [`docs/REAL_PROJECT_PLAYBOOKS.md`](docs/REAL_PROJECT_PLAYBOOKS.md) |
+| You want the full onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
+| You want to validate AISDD in practice | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
+| You want to prevent stale documentation | [`docs/DOCUMENTATION_MAINTENANCE.md`](docs/DOCUMENTATION_MAINTENANCE.md) |
+| You want to see priorities | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
 
-```txt
-templates/prompts/PROJECT_DEFINITION_WIZARD_PROMPT.md
-```
+## How AISDD is different
 
-The AI should ask practical questions, identify unknowns, and generate the first AISDD documentation set before development starts.
+| AISDD is not just... | Because AISDD... |
+|---|---|
+| A prompt kit | Stores project memory in repository docs, not chat history |
+| A documentation template | Defines AI execution cycles, handoff, acceptance, and maintenance |
+| A spec document | Separates facts, assumptions, unknowns, and risks every cycle |
+| An agent framework | Works with ChatGPT, Claude, Gemini, Cursor, Windsurf, Copilot, local agents, and future tools |
+| A greenfield-only method | Includes Recovery Mode for projects already in progress |
 
-This path is documented in:
+## Core vs Advanced
 
-```txt
-docs/PROJECT_DEFINITION.md
-```
+AISDD is layered.
 
-## Recovering an existing complex project
+| Layer | Use when | Main docs |
+|---|---|---|
+| Core | You want control today | `00_PROJECT_RULES`, `04_NEXT_TASK`, `07_HANDOFF`, `09_FILE_INDEX` |
+| Safety | Regressions or hallucinations are risky | `ACCEPTANCE_CHECKS`, `KNOWN_ISSUES`, anti-hallucination policy |
+| Product/Architecture | Business rules and structure matter | `PRODUCT_SPEC`, `ARCHITECTURE`, `CURRENT_STATE`, `DECISIONS_LOG` |
+| Recovery | The project already exists and is messy | `RECOVERY_MODE`, Recovery prompt, snapshot accuracy |
+| Mature | The project is long-running or multi-AI | dogfooding metrics, maintenance, staleness checks |
 
-If the project already exists, has grown complex, and was not started with AISDD, use Recovery Mode.
+Start with Core. Add layers only when the project pain requires them.
 
-Recovery Mode is not a rewrite, refactor, or redesign process.
+## Recovery Mode
+
+Use Recovery Mode when a project already exists, has grown complex, and was not started with AISDD.
+
+Recovery Mode is not a rewrite, refactor, redesign, or cleanup sprint.
 
 It is a stabilization process.
 
 The first Recovery pass should be read-only unless explicitly instructed otherwise. Its goal is to map the real current state, identify risks, and create a safe AISDD starting point.
 
-Use:
-
-```txt
-templates/prompts/RECOVERY_MODE_PROMPT.md
-```
-
-Recovery Mode is documented in:
-
-```txt
-docs/RECOVERY_MODE.md
-```
-
-Recommended path for existing complex projects:
+Recommended path:
 
 ```txt
 Recovery → Starter → Standard → Mature
 ```
 
-## Adoption levels
-
-AISDD does not require perfect documentation before the first task.
-
-| Level | Use when | Required effort |
-|---|---|---|
-| Definition | You only have an idea | Answer guided questions |
-| Recovery | The project already exists and is complex or undocumented | Create a factual snapshot before changing code |
-| Starter | You want control now | Fill 4 files |
-| Standard | The project will continue for weeks or months | Fill all core docs gradually |
-| Mature | Multiple AIs or contributors work on the project | Add ADRs, tests, compliance checks, examples, and validation metrics |
-
-## Core philosophy
-
-AISDD is based on a few simple ideas:
-
-1. **The repository is the source of truth.**  
-   The chat is temporary. Important project knowledge must live in versioned files.
-
-2. **One task per cycle.**  
-   Each AI interaction should solve one clearly defined task.
-
-3. **Minimum necessary context.**  
-   The AI should load only the documentation and files needed for the current task.
-
-4. **Incremental evolution.**  
-   Avoid large rewrites. Prefer small, safe, traceable changes.
-
-5. **Explicit uncertainty.**  
-   The AI must separate facts, assumptions, unknowns, and risks.
-
-6. **Continuity between AIs.**  
-   Any compatible AI should be able to continue the project from the repository docs.
-
-## Documentation maintenance
-
-Minimum context applies to task execution.
-
-The full documentation set still needs periodic maintenance.
-
-Run a lightweight documentation audit when:
-
-- a release is near;
-- architecture changes;
-- data models or contracts change;
-- 3 to 5 meaningful tasks have been completed;
-- a different AI continues the project;
-- recurring bugs appear.
-
 See:
 
+- [`docs/RECOVERY_MODE.md`](docs/RECOVERY_MODE.md)
+- [`templates/prompts/RECOVERY_MODE_PROMPT.md`](templates/prompts/RECOVERY_MODE_PROMPT.md)
+- [`examples/casa-em-dia-recovery-dogfooding/README.md`](examples/casa-em-dia-recovery-dogfooding/README.md)
+
+## Real project dogfooding
+
+AISDD is being validated against real project types, not only theoretical examples.
+
+Current real-project playbooks:
+
+| Project | What it validates |
+|---|---|
+| Casa em Dia | Android app development, manual testing, feature fixes, AI handoff |
+| Roteirizador | Existing complex internal tool, business rules, import/export workflows, regression control |
+
+See: [`docs/REAL_PROJECT_PLAYBOOKS.md`](docs/REAL_PROJECT_PLAYBOOKS.md)
+
+## Universal AI response format
+
+Every implementation response should include:
+
+| Section | Purpose |
+|---|---|
+| Objective | What the task tried to do |
+| Files changed | What changed |
+| Contract impact | Whether APIs, schemas, data, behavior, or contracts changed |
+| FACTS | What was observed directly |
+| ASSUMPTIONS | What was assumed explicitly |
+| UNKNOWNS | What is still missing |
+| RISKS | What may break or need review |
+| Acceptance status | What passed, failed, or was not tested |
+| Updated handoff | What the next session should know |
+
+Full format: [`framework/AISDD_AI_RESPONSE_FORMAT.md`](framework/AISDD_AI_RESPONSE_FORMAT.md)
+
+## Anti-hallucination policy
+
+AISDD requires the AI to distinguish:
+
+- **FACTS** — directly observed information;
+- **ASSUMPTIONS** — explicit assumptions adopted for the task;
+- **UNKNOWNS** — missing information;
+- **RISKS** — possible regressions or impacts.
+
+If critical information is missing, the AI must answer:
+
 ```txt
-docs/DOCUMENTATION_MAINTENANCE.md
+MISSING INFO
 ```
 
-## Universal documentation structure
+But not every unknown should block the work.
 
-Every AISDD project should contain:
+| Type | AI behavior |
+|---|---|
+| Critical | Stop with `MISSING INFO` |
+| Assumable | Proceed and document the assumption |
+| Cosmetic | Choose a simple default and document only if relevant |
+
+Full policy: [`framework/AISDD_ANTI_HALLUCINATION.md`](framework/AISDD_ANTI_HALLUCINATION.md)
+
+## Documentation structure
+
+AISDD projects use this structure:
 
 ```txt
 docs/
@@ -212,166 +183,9 @@ docs/
 └─ 11_TEST_STRATEGY.md
 ```
 
-## What each document does
-
-| File | Responsibility |
-|---|---|
-| `START_HERE.md` | Entry point for every AI, developer, or agent |
-| `00_PROJECT_RULES.md` | Permanent rules, invariants, conventions, forbidden changes |
-| `01_PRODUCT_SPEC.md` | Product problem, users, features, business rules, scope |
-| `02_ARCHITECTURE.md` | Architecture, modules, contracts, flows, boundaries |
-| `03_CURRENT_STATE.md` | Real current state of the project |
-| `04_NEXT_TASK.md` | The only executable task for the current cycle |
-| `05_ACCEPTANCE_CHECKS.md` | Checklist before accepting changes |
-| `06_DECISIONS_LOG.md` | Chronological ADR-style decision log |
-| `07_HANDOFF.md` | Very short continuity summary between sessions and AIs |
-| `08_KNOWN_ISSUES.md` | Known problems, limitations, mitigations |
-| `09_FILE_INDEX.md` | Operational map of files and responsibilities |
-| `10_TEST_CHECKLIST.md` | Quick regression checklist |
-| `11_TEST_STRATEGY.md` | Official testing strategy |
-
-## AISDD execution cycle
-
-Every AI-assisted task should follow this cycle:
-
-1. Read `docs/START_HERE.md`.
-2. Load only the documents required for the current task.
-3. Execute only one task.
-4. Validate acceptance checks.
-5. Update affected documentation.
-6. Update `docs/07_HANDOFF.md`.
-7. End the cycle.
-
-## Recommended reading by task type
-
-| Task type | Recommended context |
-|---|---|
-| Simple fix | `00_PROJECT_RULES.md`, `07_HANDOFF.md`, `09_FILE_INDEX.md`, `04_NEXT_TASK.md` |
-| New feature | `01_PRODUCT_SPEC.md`, `02_ARCHITECTURE.md`, `04_NEXT_TASK.md`, `05_ACCEPTANCE_CHECKS.md` |
-| Existing project recovery | `00_PROJECT_RULES.md`, `03_CURRENT_STATE.md`, `07_HANDOFF.md`, `08_KNOWN_ISSUES.md`, `09_FILE_INDEX.md` |
-| Critical change | `00_PROJECT_RULES.md`, `02_ARCHITECTURE.md`, `03_CURRENT_STATE.md`, `06_DECISIONS_LOG.md` |
-| Testing task | `10_TEST_CHECKLIST.md`, `11_TEST_STRATEGY.md` |
-| Handoff | `07_HANDOFF.md`, `03_CURRENT_STATE.md`, `04_NEXT_TASK.md` |
-| Audit | `05_ACCEPTANCE_CHECKS.md`, `08_KNOWN_ISSUES.md`, `09_FILE_INDEX.md`, `docs/DOGFOODING_METRICS.md` |
-
-## Universal AI response format
-
-Every implementation response should contain:
-
-```md
-## Objective
-
-## Files changed
-
-## Contract impact
-
-## FACTS
-
-## ASSUMPTIONS
-
-## UNKNOWNS
-
-## RISKS
-
-## Acceptance status
-
-## Updated handoff
-```
-
-This keeps AI output reviewable, traceable, and safe to hand off to another tool.
-
-## Anti-hallucination strategy
-
-AISDD requires the AI to distinguish:
-
-- **FACTS** — directly observed information;
-- **ASSUMPTIONS** — explicit assumptions adopted for the task;
-- **UNKNOWNS** — missing information;
-- **RISKS** — possible regressions or impacts.
-
-The AI must not silently invent:
-
-- files;
-- modules;
-- database tables;
-- endpoints;
-- schemas;
-- business rules;
-- external contracts;
-- architecture decisions;
-- test results.
-
-## MISSING INFO calibration
-
-If critical information is missing, the AI must answer:
-
-```txt
-MISSING INFO
-```
-
-However, not every unknown should block the task.
-
-| Type | Meaning | AI behavior |
-|---|---|---|
-| Critical | Could cause wrong behavior, broken contracts, data loss, security risk, or major rework | Stop with `MISSING INFO` |
-| Assumable | A reasonable default can be chosen and changed later with low risk | Proceed and document the assumption |
-| Cosmetic | Preference-level detail with little functional impact | Choose a simple default and document only if relevant |
-
-See the full policy in:
-
-```txt
-framework/AISDD_ANTI_HALLUCINATION.md
-```
-
-## File growth control
-
-AISDD discourages files that grow indefinitely.
-
-Suggested limits:
-
-| File type | Suggested limit |
-|---|---:|
-| Screens | 300 lines |
-| Components | 150 lines |
-| Dialogs | 100 lines |
-| Controllers / ViewModels | 400 lines |
-| Helpers | 200 lines |
-
-When a file approaches or exceeds the limit, the AI should report:
-
-```txt
-FILE GROWTH RISK
-```
-
-## Repository structure
-
-```txt
-framework/    Core AISDD method and rules
-templates/    Reusable documentation and prompt templates
-examples/     Example AISDD project structures
-docs/         Public adoption and validation documentation
-tutorials/    Step-by-step guides
-scripts/      Utility scripts for AISDD projects
-```
-
-## Prompt templates
-
-AISDD includes reusable prompts:
-
-| Prompt | Use when |
-|---|---|
-| `PROJECT_DEFINITION_WIZARD_PROMPT.md` | Starting from a rough idea |
-| `RECOVERY_MODE_PROMPT.md` | Adopting AISDD in an existing complex project |
-| `STARTER_ADOPTION_PROMPT.md` | Introducing AISDD into a new or existing repository |
-| `UNIVERSAL_AI_START_PROMPT.md` | Starting a general AISDD session |
-| `TASK_EXECUTION_PROMPT.md` | Running one AISDD task |
-| `HANDOFF_PROMPT.md` | Updating continuity between sessions |
-| `AUDIT_PROMPT.md` | Checking AISDD compliance |
-| `REFACTOR_PROMPT.md` | Performing safe refactors |
+You do not need to fill all of them before starting.
 
 ## Scripts
-
-AISDD currently includes lightweight utility scripts:
 
 | Script | Purpose |
 |---|---|
@@ -379,119 +193,44 @@ AISDD currently includes lightweight utility scripts:
 | `scripts/check-aisdd-docs.py` | Check whether required AISDD docs exist |
 | `scripts/check-aisdd-staleness.py` | Detect simple stale-documentation signals from Git history |
 
-## Validation and dogfooding
+## Languages
 
-AISDD should be judged by real continuity, not by how good the documentation looks.
+- [Português brasileiro](docs/pt-BR/README.md)
+- [Português brasileiro — Quick Start](docs/pt-BR/QUICK_START.md)
 
-The dogfooding guide tracks:
+The English documentation is currently the canonical source. Portuguese docs are summary entrypoints unless explicitly marked as full translations.
 
-- handoff update rate;
-- decision log update rate;
-- context size estimate;
-- missing info friction;
-- cross-AI continuation.
-
-Before recalibrating core rules, AISDD recommends collecting at least:
-
-| Requirement | Minimum |
-|---|---:|
-| Real tasks completed | 10 |
-| Different task types | 3 |
-| Session handoffs | 3 |
-| Structural decisions | 2 |
-| Cross-AI continuation tests | 1 |
-
-Context usage can be estimated with:
+## Repository map
 
 ```txt
-estimated_tokens = total_characters / 4
+framework/    Core AISDD method and rules
+templates/    Reusable docs and prompt templates
+examples/     Example structures and dogfooding cases
+docs/         Adoption, maintenance, validation, and roadmap docs
+tutorials/    Step-by-step guides
+scripts/      Utility scripts for AISDD projects
 ```
 
-See:
-
-```txt
-docs/DOGFOODING_METRICS.md
-```
-
-## Example first AI request
-
-```txt
-This project follows AISDD.
-Read docs/START_HERE.md first.
-Then read only the minimum required context for docs/04_NEXT_TASK.md.
-Execute one task only.
-Do not invent missing contracts, files, schemas, endpoints, or business rules.
-If critical information is missing, answer MISSING INFO.
-Update affected docs and docs/07_HANDOFF.md before finishing.
-```
-
-## When AISDD is useful
-
-AISDD is especially useful when:
-
-- the project will last more than a few sessions;
-- multiple AIs may work on the same project;
-- you need predictable handoff between sessions;
-- the project has business rules or architecture decisions;
-- you want to reduce repeated prompting;
-- regressions are costly;
-- you want traceable AI-assisted development;
-- an existing project is becoming too complex to explain repeatedly.
-
-## When AISDD may be overkill
-
-AISDD may be unnecessary for:
-
-- tiny one-off scripts;
-- throwaway prototypes;
-- experiments with no maintenance plan;
-- tasks where no continuity is needed.
-
-Even then, the Starter flow can still help keep AI work controlled.
-
-## Current status
+## Status
 
 AISDD is in early development.
 
-The current focus is:
+Current focus:
 
-- making adoption extremely simple;
-- supporting both new and existing projects;
-- testing the framework through real projects;
-- improving examples;
-- validating cross-AI continuity;
-- collecting dogfooding metrics.
+- make adoption extremely simple;
+- support new and already-started projects;
+- validate AISDD through Casa em Dia and Roteirizador;
+- improve examples;
+- reduce documentation maintenance friction;
+- keep the framework vendor-independent and stack-independent.
 
-## Roadmap
-
-See the prioritized roadmap:
-
-```txt
-docs/ROADMAP.md
-```
-
-Current short-term priorities:
-
-- complete practical example project;
-- compliance checklist;
-- Recovery Mode validation;
-- documentation maintenance guide;
-- stale-documentation checks;
-- Portuguese Quick Start.
+Roadmap: [`docs/ROADMAP.md`](docs/ROADMAP.md)
 
 ## Contributing
 
-Contributions are welcome if they improve:
+Contributions are welcome if they improve clarity, safety, adoption, traceability, AI portability, validation, or long-term maintainability.
 
-- clarity;
-- safety;
-- adoption;
-- traceability;
-- AI portability;
-- validation;
-- long-term maintainability.
-
-Before proposing changes, preserve these constraints:
+Before proposing changes, preserve:
 
 - no AI vendor lock-in;
 - no stack lock-in;
@@ -499,11 +238,7 @@ Before proposing changes, preserve these constraints:
 - no silent weakening of anti-hallucination rules;
 - no changes to core rules without clear reason or validation.
 
-See:
-
-```txt
-CONTRIBUTING.md
-```
+See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## License
 
