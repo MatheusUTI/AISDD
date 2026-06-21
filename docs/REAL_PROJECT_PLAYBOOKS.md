@@ -15,6 +15,8 @@ Use the smallest AISDD mode that makes the next task safer.
 
 Do not adopt all layers at once.
 
+Also track Prompt Maturity Level, or PML, to see whether repeated manual context is decreasing.
+
 ## Casa em Dia
 
 Casa em Dia is a real Android app project developed with AI assistance.
@@ -48,6 +50,34 @@ Create or update only:
 
 Do not refactor during the first snapshot.
 
+### Prompt maturity target
+
+Initial target:
+
+```txt
+PML-1 → PML-2
+```
+
+Near-term target:
+
+```txt
+PML-3 for CR-style tasks
+```
+
+Example prompts to test:
+
+```txt
+Read docs/START_HERE.md.
+Objective: CR13.
+```
+
+```txt
+Read docs/START_HERE.md.
+Next task.
+```
+
+If the AI fails, improve the repository docs instead of making the prompt longer.
+
 ### Safe first tasks
 
 Good first tasks:
@@ -65,13 +95,20 @@ Avoid:
 - implementing several features at once;
 - generating complete docs from guesses.
 
-### Validation question
+### Validation questions
 
 ```txt
 Did the AI describe the real app state correctly?
 ```
 
-Use Recovery snapshot accuracy from `docs/DOGFOODING_METRICS.md`.
+```txt
+What was the lowest prompt maturity level that worked safely?
+```
+
+Use:
+
+- Recovery snapshot accuracy from `docs/DOGFOODING_METRICS.md`;
+- Prompt Maturity Levels from `docs/PROMPT_MATURITY_LEVELS.md`.
 
 ## Roteirizador
 
@@ -110,6 +147,28 @@ Add `docs/01_PRODUCT_SPEC.md` only for confirmed product rules.
 
 Keep uncertain rules in `UNKNOWNS`.
 
+### Prompt maturity target
+
+Initial target:
+
+```txt
+PML-1
+```
+
+Near-term target:
+
+```txt
+PML-2 for isolated tasks
+```
+
+Mature target:
+
+```txt
+PML-3 only after product rules and workflows are documented
+```
+
+Roteirizador should move more slowly than Casa em Dia because business rules are more dangerous to infer.
+
 ### Safe first tasks
 
 Good first tasks:
@@ -128,10 +187,14 @@ Avoid:
 - rewriting import or export behavior without checks;
 - optimizing before documenting current behavior.
 
-### Validation question
+### Validation questions
 
 ```txt
 Did the AI preserve the real rules and constraints?
+```
+
+```txt
+Did a shorter prompt cause the AI to infer business rules incorrectly?
 ```
 
 Track:
@@ -139,7 +202,8 @@ Track:
 - invented rules;
 - misunderstood files or fields;
 - missing acceptance checks;
-- repeated context that still had to be explained manually.
+- repeated context that still had to be explained manually;
+- successful prompt maturity level per task.
 
 ## Shared rules
 
@@ -151,8 +215,12 @@ For both projects:
 - keep `04_NEXT_TASK.md` small;
 - update `07_HANDOFF.md` every cycle;
 - record unknowns instead of inventing them;
-- measure whether AISDD reduced repeated explanation.
+- measure whether AISDD reduced repeated explanation;
+- test shorter prompts intentionally;
+- improve docs when shorter prompts fail.
 
 ## Main rule
 
 AISDD should become useful before it becomes complete.
+
+Prompt size should decrease as repository documentation becomes trustworthy.
