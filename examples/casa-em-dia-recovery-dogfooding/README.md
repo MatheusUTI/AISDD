@@ -6,15 +6,18 @@ It is based on a real Android project called **Casa em Dia**, but this example i
 
 No proprietary source code is included here.
 
-## Current report
+## Current reports
 
-See the current dogfooding report:
+See:
 
 ```txt
 examples/casa-em-dia-recovery-dogfooding/REPORT.md
+examples/casa-em-dia-recovery-dogfooding/DOC_AUDIT_01.md
 ```
 
-The first report is a conversation-informed baseline. It does not claim source-code-audited accuracy yet.
+`REPORT.md` is the first conversation-informed baseline.
+
+`DOC_AUDIT_01.md` is the first documentation-consistency audit based on uploaded Casa em Dia AISDD docs. It does not claim source-code-audited accuracy yet.
 
 ## Purpose
 
@@ -168,4 +171,4 @@ TODO
 
 This case is now active.
 
-The baseline report has been started, but source-code-audited Recovery validation is still pending.
+The baseline report and first documentation-consistency audit have been started, but source-code-audited Recovery validation is still pending.
