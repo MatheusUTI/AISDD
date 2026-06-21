@@ -65,6 +65,8 @@ Choose the smallest package that reduces the next real pain.
 | Mature Kit | Multi-AI, releases, contributors | Metrics, maintenance, staleness checks |
 | Framework Maintainer Layer | Improving AISDD itself | Full repository |
 
+Packages are what you copy or maintain. Layers below explain when to add more capability. For example, Recovery Kit corresponds to the Recovery layer, and Mature Kit corresponds to the Mature layer.
+
 See: [`docs/ADOPTION_PACKAGES.md`](docs/ADOPTION_PACKAGES.md)
 
 ## Prompt Maturity Levels
@@ -81,9 +83,16 @@ AISDD success can be measured by how little manual prompt context is needed.
 
 Target: manual context should trend toward zero.
 
-See: [`docs/PROMPT_MATURITY_LEVELS.md`](docs/PROMPT_MATURITY_LEVELS.md)
+Track PML as part of dogfooding metrics to prove whether prompts are actually getting smaller over time.
+
+See:
+
+- [`docs/PROMPT_MATURITY_LEVELS.md`](docs/PROMPT_MATURITY_LEVELS.md)
+- [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md)
 
 ## Choose your path
+
+This table is only a navigation shortcut. If you are deciding what to copy into a project, use Adoption Packages above.
 
 | Situation | Start with |
 |---|---|
@@ -122,6 +131,8 @@ AISDD is layered.
 
 Start with Core. Add layers only when the project pain requires them.
 
+See: [`docs/CORE_VS_ADVANCED.md`](docs/CORE_VS_ADVANCED.md)
+
 ## Recovery Mode
 
 Use Recovery Mode when a project already exists, has grown complex, and was not started with AISDD.
@@ -148,7 +159,9 @@ See:
 
 AISDD is being validated against real project types, not only theoretical examples.
 
-Current real-project playbooks:
+Casa em Dia is a real Android app used to validate mobile development, manual testing, feature fixes, and AI handoff.
+
+Roteirizador is a real internal logistics/routing tool category used to validate business-rule-heavy workflows, imports/exports, and regression control.
 
 | Project | What it validates |
 |---|---|

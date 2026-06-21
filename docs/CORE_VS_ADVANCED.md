@@ -4,6 +4,28 @@ AISDD should be useful without forcing users to adopt the whole framework at onc
 
 This document separates what is essential from what is optional, advanced, or maturity-driven.
 
+## Packages vs layers
+
+AISDD uses two related terms:
+
+| Term | Meaning |
+|---|---|
+| Package | What you copy or maintain in a project |
+| Layer | Capability you add when the project needs it |
+
+They usually match:
+
+| Package | Corresponding layer |
+|---|---|
+| Core Kit | Core layer |
+| Recovery Kit | Recovery layer |
+| Standard Kit | Product and architecture layers |
+| Mature Kit | Maturity layer |
+
+If you are deciding what to copy, read `docs/ADOPTION_PACKAGES.md` first.
+
+If you are deciding what capability to add next, use this document.
+
 ## Core AISDD
 
 Use this when you want to start today.

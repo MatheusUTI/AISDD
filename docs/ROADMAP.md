@@ -17,6 +17,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Item | Why it matters | Status |
 |---|---|---|
 | Executive README | Reduces cognitive load for first-time readers | Added |
+| Editorial reconciliation | Clarifies packages vs layers vs navigation paths | Added |
 | Adoption packages | Makes clear what users should copy and what belongs only to the framework repo | Added |
 | Core vs Advanced guide | Makes clear what is essential and what is optional | Added |
 | Prompt Maturity Levels | Measures whether manual prompt context is trending toward zero | Added |
