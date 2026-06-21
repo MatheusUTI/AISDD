@@ -47,6 +47,22 @@ The rest of AISDD is added only when the project needs it.
 
 See: [`docs/CORE_VS_ADVANCED.md`](docs/CORE_VS_ADVANCED.md)
 
+## Prompt Maturity Levels
+
+AISDD success can be measured by how little manual prompt context is needed.
+
+| Level | Example | Meaning |
+|---|---|---|
+| PML-0 | Huge prompt with rules and context | Project memory still lives in chat |
+| PML-1 | `Read START_HERE.md. Objective: refactor SettingsScreen.kt. Preserve behavior.` | Docs help, but user still adds constraints |
+| PML-2 | `Read START_HERE.md. Objective: refactor SettingsScreen.kt.` | Docs carry most constraints |
+| PML-3 | `Read START_HERE.md. Objective: CR13.` | Task ID and docs are enough |
+| PML-4 | AI reads `docs/04_NEXT_TASK.md` and executes | Repository-driven execution |
+
+Target: manual context should trend toward zero.
+
+See: [`docs/PROMPT_MATURITY_LEVELS.md`](docs/PROMPT_MATURITY_LEVELS.md)
+
 ## Choose your path
 
 | Situation | Start with |
