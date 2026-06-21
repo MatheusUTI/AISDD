@@ -10,6 +10,7 @@ Public documentation for adopting, using, maintaining, and validating AISDD.
 ## Start with
 
 - `PROJECT_DEFINITION.md`
+- `RECOVERY_MODE.md`
 - `QUICK_START.md`
 - `GETTING_STARTED.md`
 - `HOW_TO_ADOPT.md`
