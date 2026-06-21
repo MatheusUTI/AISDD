@@ -50,7 +50,8 @@ Choose the path that matches your situation:
 | Situation | Start with |
 |---|---|
 | You only have a rough project idea | [`docs/PROJECT_DEFINITION.md`](docs/PROJECT_DEFINITION.md) |
-| You already have a project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
+| You already have a simple project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
+| You already have a complex or messy project | [`docs/RECOVERY_MODE.md`](docs/RECOVERY_MODE.md) |
 | You want the complete onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
 | You want to validate AISDD in real usage | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
 | You want to understand the core method | [`framework/AISDD_MANIFESTO.md`](framework/AISDD_MANIFESTO.md) |
@@ -107,6 +108,34 @@ This path is documented in:
 docs/PROJECT_DEFINITION.md
 ```
 
+## Recovering an existing complex project
+
+If the project already exists, has grown complex, and was not started with AISDD, use Recovery Mode.
+
+Recovery Mode is not a rewrite, refactor, or redesign process.
+
+It is a stabilization process.
+
+The first Recovery pass should be read-only unless explicitly instructed otherwise. Its goal is to map the real current state, identify risks, and create a safe AISDD starting point.
+
+Use:
+
+```txt
+templates/prompts/RECOVERY_MODE_PROMPT.md
+```
+
+Recovery Mode is documented in:
+
+```txt
+docs/RECOVERY_MODE.md
+```
+
+Recommended path for existing complex projects:
+
+```txt
+Recovery → Starter → Standard → Mature
+```
+
 ## Adoption levels
 
 AISDD does not require perfect documentation before the first task.
@@ -114,6 +143,7 @@ AISDD does not require perfect documentation before the first task.
 | Level | Use when | Required effort |
 |---|---|---|
 | Definition | You only have an idea | Answer guided questions |
+| Recovery | The project already exists and is complex or undocumented | Create a factual snapshot before changing code |
 | Starter | You want control now | Fill 4 files |
 | Standard | The project will continue for weeks or months | Fill all core docs gradually |
 | Mature | Multiple AIs or contributors work on the project | Add ADRs, tests, compliance checks, examples, and validation metrics |
@@ -218,6 +248,7 @@ Every AI-assisted task should follow this cycle:
 |---|---|
 | Simple fix | `00_PROJECT_RULES.md`, `07_HANDOFF.md`, `09_FILE_INDEX.md`, `04_NEXT_TASK.md` |
 | New feature | `01_PRODUCT_SPEC.md`, `02_ARCHITECTURE.md`, `04_NEXT_TASK.md`, `05_ACCEPTANCE_CHECKS.md` |
+| Existing project recovery | `00_PROJECT_RULES.md`, `03_CURRENT_STATE.md`, `07_HANDOFF.md`, `08_KNOWN_ISSUES.md`, `09_FILE_INDEX.md` |
 | Critical change | `00_PROJECT_RULES.md`, `02_ARCHITECTURE.md`, `03_CURRENT_STATE.md`, `06_DECISIONS_LOG.md` |
 | Testing task | `10_TEST_CHECKLIST.md`, `11_TEST_STRATEGY.md` |
 | Handoff | `07_HANDOFF.md`, `03_CURRENT_STATE.md`, `04_NEXT_TASK.md` |
@@ -330,6 +361,7 @@ AISDD includes reusable prompts:
 | Prompt | Use when |
 |---|---|
 | `PROJECT_DEFINITION_WIZARD_PROMPT.md` | Starting from a rough idea |
+| `RECOVERY_MODE_PROMPT.md` | Adopting AISDD in an existing complex project |
 | `STARTER_ADOPTION_PROMPT.md` | Introducing AISDD into a new or existing repository |
 | `UNIVERSAL_AI_START_PROMPT.md` | Starting a general AISDD session |
 | `TASK_EXECUTION_PROMPT.md` | Running one AISDD task |
@@ -403,7 +435,8 @@ AISDD is especially useful when:
 - the project has business rules or architecture decisions;
 - you want to reduce repeated prompting;
 - regressions are costly;
-- you want traceable AI-assisted development.
+- you want traceable AI-assisted development;
+- an existing project is becoming too complex to explain repeatedly.
 
 ## When AISDD may be overkill
 
@@ -423,6 +456,7 @@ AISDD is in early development.
 The current focus is:
 
 - making adoption extremely simple;
+- supporting both new and existing projects;
 - testing the framework through real projects;
 - improving examples;
 - validating cross-AI continuity;
@@ -440,6 +474,7 @@ Current short-term priorities:
 
 - complete practical example project;
 - compliance checklist;
+- Recovery Mode validation;
 - documentation maintenance guide;
 - stale-documentation checks;
 - Portuguese Quick Start.
