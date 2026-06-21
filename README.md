@@ -73,6 +73,7 @@ See: [`docs/PROMPT_MATURITY_LEVELS.md`](docs/PROMPT_MATURITY_LEVELS.md)
 | You want real-project usage guidance | [`docs/REAL_PROJECT_PLAYBOOKS.md`](docs/REAL_PROJECT_PLAYBOOKS.md) |
 | You want the full onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
 | You want to validate AISDD in practice | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
+| You want to see a filled handoff example | [`examples/HANDOFF_EXAMPLE.md`](examples/HANDOFF_EXAMPLE.md) |
 | You want to prevent stale documentation | [`docs/DOCUMENTATION_MAINTENANCE.md`](docs/DOCUMENTATION_MAINTENANCE.md) |
 | You want to see priorities | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
 
