@@ -18,6 +18,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 |---|---|---|
 | Executive README | Reduces cognitive load for first-time readers | Added |
 | Core vs Advanced guide | Makes clear what is essential and what is optional | Added |
+| Prompt Maturity Levels | Measures whether manual prompt context is trending toward zero | Added |
 | Real project playbooks | Makes AISDD usable in Casa em Dia and Roteirizador | Added |
 | Recovery Mode | Makes AISDD usable in projects that already exist and are becoming complex | Added |
 | Recovery snapshot accuracy metric | Measures whether Recovery mapped the real project correctly | Added |
@@ -34,6 +35,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 |---|---|---|
 | Filled Casa em Dia dogfooding report | Replaces process claims with real Recovery Mode results | Planned |
 | Roteirizador dogfooding report | Validates AISDD in a business-rule-heavy internal tool | Planned |
+| PML reports for Casa em Dia and Roteirizador | Shows whether prompts are actually getting smaller | Planned |
 | Release and versioning policy | Defines how AISDD changes are published | Planned |
 | Governance rules for core changes | Clarifies what counts as sufficient validation | Added initial policy |
 | More dogfooding reports | Replaces assumptions with usage evidence | Planned |
@@ -55,9 +57,10 @@ The current focus is:
 1. Make AISDD easy to adopt.
 2. Support both new projects and already-started projects.
 3. Validate AISDD through Casa em Dia and Roteirizador.
-4. Reduce documentation maintenance friction.
-5. Improve examples.
-6. Keep the framework vendor-independent and stack-independent.
+4. Measure whether prompt context decreases over time.
+5. Reduce documentation maintenance friction.
+6. Improve examples.
+7. Keep the framework vendor-independent and stack-independent.
 
 ## Change policy
 
