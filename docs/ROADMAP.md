@@ -28,7 +28,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Real project playbooks | Makes AISDD usable in Casa em Dia and Roteirizador | Added |
 | Recovery Mode | Makes AISDD usable in projects that already exist and are becoming complex | Added |
 | Recovery snapshot accuracy metric | Measures whether Recovery mapped the real project correctly | Added |
-| Casa em Dia Recovery dogfooding case | Provides visible evidence from a real AISDD adoption scenario | Added as planned case |
+| Casa em Dia Recovery dogfooding baseline | Starts evidence collection without claiming code-audited accuracy | Added |
 | Complete practical example project | Helps users understand AISDD by copying a real example | Planned |
 | Compliance checklist | Makes adoption reviewable and repeatable | Planned |
 | Documentation maintenance guide | Prevents non-loaded docs from becoming stale | Added |
@@ -39,8 +39,8 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 
 | Item | Why it matters | Status |
 |---|---|---|
+| Source-audited Casa em Dia Recovery report | Replaces baseline claims with real source-checked results | Planned |
 | End-to-end example project | Demonstrates AISDD working through multiple cycles | Planned |
-| Filled Casa em Dia dogfooding report | Replaces process claims with real Recovery Mode results | Planned |
 | Roteirizador dogfooding report | Validates AISDD in a business-rule-heavy internal tool | Planned |
 | PML reports for Casa em Dia and Roteirizador | Shows whether prompts are actually getting smaller | Planned |
 | Release and versioning policy | Defines how AISDD changes are published | Planned |
