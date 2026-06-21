@@ -35,6 +35,41 @@ MISSING INFO
 
 The AI may proceed only when the missing information is not critical and the assumption is explicitly documented.
 
+## Critical vs assumable information
+
+Not every unknown should block the task.
+
+Use this calibration:
+
+| Type | Meaning | AI behavior |
+|---|---|---|
+| Critical | Missing information could cause wrong behavior, broken contracts, data loss, security risk, or major rework | Stop with `MISSING INFO` |
+| Assumable | A reasonable default can be chosen and changed later with low risk | Proceed and document the assumption |
+| Cosmetic | Preference-level detail with little functional impact | Choose a simple default and document only if relevant |
+
+## When to stop
+
+Stop with `MISSING INFO` when the missing information affects:
+
+- business rules;
+- data model or migrations;
+- public API or external contract;
+- authentication, authorization, security, or privacy;
+- irreversible file or data operations;
+- architecture direction;
+- acceptance criteria.
+
+## When to proceed
+
+Proceed with an explicit assumption when the missing information is:
+
+- naming preference;
+- copy text;
+- visual detail;
+- temporary placeholder;
+- low-risk implementation detail;
+- easily reversible choice.
+
 ## Evidence hierarchy
 
 Prefer information from:
