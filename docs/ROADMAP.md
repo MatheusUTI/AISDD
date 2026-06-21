@@ -17,6 +17,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Item | Why it matters | Status |
 |---|---|---|
 | Executive README | Reduces cognitive load for first-time readers | Added |
+| Adoption packages | Makes clear what users should copy and what belongs only to the framework repo | Added |
 | Core vs Advanced guide | Makes clear what is essential and what is optional | Added |
 | Prompt Maturity Levels | Measures whether manual prompt context is trending toward zero | Added |
 | Handoff example | Shows what a useful `07_HANDOFF.md` looks like | Added |
@@ -60,12 +61,13 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 The current focus is:
 
 1. Make AISDD easy to adopt.
-2. Support new, existing, and long-running projects.
-3. Validate AISDD through Casa em Dia and Roteirizador.
-4. Measure whether prompt context decreases over time.
-5. Reduce documentation maintenance friction.
-6. Improve examples, especially handoff and end-to-end usage.
-7. Keep the framework vendor-independent and stack-independent.
+2. Make the adoption path obvious enough that users do not need explanation.
+3. Support new, existing, and long-running projects.
+4. Validate AISDD through Casa em Dia and Roteirizador.
+5. Measure whether prompt context decreases over time.
+6. Reduce documentation maintenance friction.
+7. Improve examples, especially handoff and end-to-end usage.
+8. Keep the framework vendor-independent and stack-independent.
 
 ## Change policy
 
