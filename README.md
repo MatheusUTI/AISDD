@@ -41,6 +41,7 @@ Compatible tools include ChatGPT, Gemini, Claude, Cursor, Windsurf, Copilot, loc
 ## Languages
 
 - [Português brasileiro](docs/pt-BR/README.md)
+- [Português brasileiro — Quick Start](docs/pt-BR/QUICK_START.md)
 
 ## Start here
 
@@ -53,6 +54,8 @@ Choose the path that matches your situation:
 | You want the complete onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
 | You want to validate AISDD in real usage | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
 | You want to understand the core method | [`framework/AISDD_MANIFESTO.md`](framework/AISDD_MANIFESTO.md) |
+| You want to prevent stale documentation | [`docs/DOCUMENTATION_MAINTENANCE.md`](docs/DOCUMENTATION_MAINTENANCE.md) |
+| You want to see priorities | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
 
 ## The shortest adoption path
 
@@ -136,6 +139,27 @@ AISDD is based on a few simple ideas:
 
 6. **Continuity between AIs.**  
    Any compatible AI should be able to continue the project from the repository docs.
+
+## Documentation maintenance
+
+Minimum context applies to task execution.
+
+The full documentation set still needs periodic maintenance.
+
+Run a lightweight documentation audit when:
+
+- a release is near;
+- architecture changes;
+- data models or contracts change;
+- 3 to 5 meaningful tasks have been completed;
+- a different AI continues the project;
+- recurring bugs appear.
+
+See:
+
+```txt
+docs/DOCUMENTATION_MAINTENANCE.md
+```
 
 ## Universal documentation structure
 
@@ -321,6 +345,7 @@ AISDD currently includes lightweight utility scripts:
 |---|---|
 | `scripts/init-aisdd-project.py` | Copy AISDD docs into a project |
 | `scripts/check-aisdd-docs.py` | Check whether required AISDD docs exist |
+| `scripts/check-aisdd-staleness.py` | Detect simple stale-documentation signals from Git history |
 
 ## Validation and dogfooding
 
@@ -405,14 +430,19 @@ The current focus is:
 
 ## Roadmap
 
-Planned improvements:
+See the prioritized roadmap:
+
+```txt
+docs/ROADMAP.md
+```
+
+Current short-term priorities:
 
 - complete practical example project;
-- Portuguese documentation expansion;
 - compliance checklist;
-- release and versioning policy;
-- stronger automation around documentation checks;
-- more real-world dogfooding reports.
+- documentation maintenance guide;
+- stale-documentation checks;
+- Portuguese Quick Start.
 
 ## Contributing
 
