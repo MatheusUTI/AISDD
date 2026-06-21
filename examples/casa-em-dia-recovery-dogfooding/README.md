@@ -6,6 +6,16 @@ It is based on a real Android project called **Casa em Dia**, but this example i
 
 No proprietary source code is included here.
 
+## Current report
+
+See the current dogfooding report:
+
+```txt
+examples/casa-em-dia-recovery-dogfooding/REPORT.md
+```
+
+The first report is a conversation-informed baseline. It does not claim source-code-audited accuracy yet.
+
 ## Purpose
 
 Use this case to test whether AISDD can be adopted in the middle of an existing project that was not started with AISDD.
@@ -31,6 +41,8 @@ Casa em Dia is useful for dogfooding because it represents a realistic solo-deve
 This case should validate Recovery Mode, not normal AISDD execution.
 
 The primary metric is snapshot accuracy.
+
+The secondary metric is Prompt Maturity Level, or PML.
 
 ## Snapshot accuracy metric
 
@@ -59,6 +71,18 @@ reviewed_items = correct_items + partially_correct_items + incorrect_items
 
 Unknown items should be tracked separately and not counted as correct.
 
+## Prompt maturity metric
+
+Track the lowest prompt level that safely works for a real task.
+
+Example progression:
+
+```txt
+PML-1 → PML-2 → PML-3
+```
+
+Do not claim PML-3 until task IDs and next-task docs are clear enough for another AI to continue safely.
+
 ## Suggested Recovery test
 
 1. Run `templates/prompts/RECOVERY_MODE_PROMPT.md` against the real project.
@@ -67,7 +91,8 @@ Unknown items should be tracked separately and not counted as correct.
 4. Review the generated docs manually.
 5. Count correct, partially correct, incorrect, and unknown items.
 6. Record what the AI invented, missed, or misunderstood.
-7. Update AISDD Recovery Mode if repeated issues appear.
+7. Record the attempted and successful PML.
+8. Update AISDD Recovery Mode if repeated issues appear.
 
 ## Initial documents to evaluate
 
@@ -116,6 +141,12 @@ TODO
 - Snapshot accuracy: TODO
 - Correction rate: TODO
 
+## Prompt maturity
+
+- Attempted PML: TODO
+- Successful PML: TODO
+- Notes: TODO
+
 ## Inventions or hallucinations
 
 - TODO
@@ -135,6 +166,6 @@ TODO
 
 ## Status
 
-This case is a planned public dogfooding report.
+This case is now active.
 
-It should be filled after Recovery Mode is tested on the real Casa em Dia project.
+The baseline report has been started, but source-code-audited Recovery validation is still pending.
