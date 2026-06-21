@@ -30,6 +30,25 @@ Do not load every document for every task.
 
 Instead, schedule lightweight audits.
 
+## Entrypoint discipline
+
+AISDD has several documents, but they should not all act as equal starting points.
+
+Use this hierarchy:
+
+| Entrypoint | Role |
+|---|---|
+| `README.md` | Public repository overview and navigation hub |
+| `docs/README.md` | Documentation index |
+| `docs/START_HERE.md` | Per-project AI entrypoint copied into adopting projects |
+| `docs/PROJECT_DEFINITION.md` | Specialist path for new projects |
+| `docs/RECOVERY_MODE.md` | Specialist path for existing complex projects |
+| `docs/QUICK_START.md` | Specialist path for simple adoption |
+
+Specialist documents should not duplicate the whole framework.
+
+They should point back to the canonical docs when possible.
+
 ## Required audit moments
 
 Run a documentation maintenance audit when any of these happen:
@@ -67,6 +86,23 @@ Use this checklist during a maintenance pass:
 - [ ] `10_TEST_CHECKLIST.md` covers known regression risks.
 - [ ] `11_TEST_STRATEGY.md` still matches how the project is tested.
 
+## Translation maintenance
+
+The English documentation is the canonical source for now.
+
+Portuguese documentation may be either:
+
+| Type | Requirement |
+|---|---|
+| Summary entrypoint | May summarize and point to canonical English docs |
+| Full translation | Must be checked when the canonical English source changes |
+
+Current `pt-BR` docs are treated as summary entrypoints unless explicitly marked as full translations.
+
+When a canonical English document changes, check whether any linked `pt-BR` summary now misleads the reader.
+
+If a full translation is added later, include it in the audit checklist.
+
 ## Staleness signals
 
 A document may be stale when:
@@ -76,7 +112,8 @@ A document may be stale when:
 - new files appeared but `09_FILE_INDEX.md` did not;
 - a structural decision was made but no ADR was added;
 - bugs repeated but `08_KNOWN_ISSUES.md` stayed unchanged;
-- test expectations changed but test docs stayed unchanged.
+- test expectations changed but test docs stayed unchanged;
+- canonical English docs changed but full translations did not.
 
 ## Automation support
 

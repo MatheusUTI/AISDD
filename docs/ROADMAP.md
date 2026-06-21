@@ -17,6 +17,8 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Item | Why it matters | Status |
 |---|---|---|
 | Recovery Mode | Makes AISDD usable in projects that already exist and are becoming complex | Added |
+| Recovery snapshot accuracy metric | Measures whether Recovery mapped the real project correctly | Added |
+| Casa em Dia Recovery dogfooding case | Provides visible evidence from a real AISDD adoption scenario | Added as planned case |
 | Complete practical example project | Helps users understand AISDD by copying a real example | Planned |
 | Compliance checklist | Makes adoption reviewable and repeatable | Planned |
 | Documentation maintenance guide | Prevents non-loaded docs from becoming stale | Added |
@@ -27,7 +29,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 
 | Item | Why it matters | Status |
 |---|---|---|
-| Recovery Mode dogfooding report | Validates whether AISDD can stabilize a real mid-project adoption | Planned |
+| Filled Casa em Dia dogfooding report | Replaces process claims with real Recovery Mode results | Planned |
 | Release and versioning policy | Defines how AISDD changes are published | Planned |
 | Governance rules for core changes | Clarifies what counts as sufficient validation | Added initial policy |
 | More dogfooding reports | Replaces assumptions with usage evidence | Planned |

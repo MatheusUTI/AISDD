@@ -2,7 +2,7 @@
 
 Use this document to validate whether AISDD works in real projects.
 
-The goal is to measure practical friction, context savings, handoff quality, and AI portability.
+The goal is to measure practical friction, context savings, handoff quality, AI portability, and Recovery Mode accuracy.
 
 ## Why this exists
 
@@ -19,6 +19,7 @@ Those claims should be tested during real usage.
 | Context size estimate | Whether AISDD reduces repeated context |
 | Missing info friction | Whether anti-hallucination rules block too often |
 | Cross-AI continuation | Whether another AI can continue from docs alone |
+| Recovery snapshot accuracy | Whether Recovery Mode maps the real project state correctly |
 
 ## Minimum validation window
 
@@ -33,6 +34,7 @@ Before drawing conclusions or recalibrating core rules, collect at least:
 | Session handoffs | 3 |
 | Structural decisions | 2 |
 | Cross-AI continuation tests | 1 |
+| Recovery snapshots reviewed | 1 |
 
 Recommended task types:
 
@@ -249,7 +251,60 @@ AI-B should correctly identify:
 - important files;
 - relevant constraints.
 
-## 6. Dogfooding report template
+## 6. Recovery snapshot accuracy
+
+Recovery Mode has a different primary risk: the AI may map the existing project incorrectly.
+
+Measure the accuracy of the first Recovery snapshot before using it as a source of truth.
+
+### What to review
+
+Review each factual item generated in the initial Recovery docs:
+
+- `docs/00_PROJECT_RULES.md`
+- `docs/03_CURRENT_STATE.md`
+- `docs/04_NEXT_TASK.md`
+- `docs/07_HANDOFF.md`
+- `docs/08_KNOWN_ISSUES.md`
+- `docs/09_FILE_INDEX.md`
+
+### Classification
+
+| Classification | Meaning |
+|---|---|
+| Correct | Matches the real project state |
+| Partially correct | Mostly true, but needs correction or nuance |
+| Incorrect | Does not match the real project state |
+| Unknown | Cannot be confirmed yet |
+
+### Formulas
+
+```txt
+snapshot_accuracy = correct_items / reviewed_items
+correction_rate = corrected_items / reviewed_items
+corrected_items = partially_correct_items + incorrect_items
+reviewed_items = correct_items + partially_correct_items + incorrect_items
+```
+
+Unknown items must be tracked separately and must not be counted as correct.
+
+### Log format
+
+| Date | Project | Correct | Partial | Incorrect | Unknown | Snapshot accuracy | Correction rate | Notes |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+
+### Signal
+
+Good sign:
+
+- The AI captures the real state with few corrections.
+
+Warning sign:
+
+- The AI invents architecture, overstates completeness, misses known bugs, or treats assumptions as facts.
+
+## 7. Dogfooding report template
 
 Use this after testing AISDD on a real project.
 
@@ -271,6 +326,7 @@ TODO
 - Session handoffs: TODO
 - Structural decisions: TODO
 - Cross-AI continuation tests: TODO
+- Recovery snapshots reviewed: TODO
 
 ## Summary
 
@@ -293,6 +349,7 @@ TODO
 | Context size estimate | TODO |
 | Missing info friction | TODO |
 | Cross-AI continuation | TODO |
+| Recovery snapshot accuracy | TODO |
 
 ## Changes recommended for AISDD
 

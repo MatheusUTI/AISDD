@@ -146,6 +146,32 @@ Decision: The project currently stores reminders locally.
 UNKNOWNS: Original reason for this decision is not documented.
 ```
 
+## Recovery validation
+
+Recovery Mode should be validated by snapshot accuracy.
+
+After the first snapshot, review the generated items and classify them as:
+
+- Correct;
+- Partially correct;
+- Incorrect;
+- Unknown.
+
+Use:
+
+```txt
+snapshot_accuracy = correct_items / reviewed_items
+correction_rate = corrected_items / reviewed_items
+```
+
+This measures whether the AI mapped the real project correctly before AISDD treats the snapshot as reliable.
+
+See:
+
+```txt
+docs/DOGFOODING_METRICS.md
+```
+
 ## Exit criteria
 
 Recovery Mode can end when:
