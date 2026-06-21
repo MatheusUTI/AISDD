@@ -4,6 +4,14 @@
 
 It is designed to keep AI-assisted projects predictable, traceable, and easy to continue across different AI tools.
 
+## Start here
+
+| Situation | Use this |
+|---|---|
+| You only have a project idea | [`docs/PROJECT_DEFINITION.md`](docs/PROJECT_DEFINITION.md) |
+| You already have a project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
+| You want the full onboarding guide | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
+
 ## Quick start
 
 Use AISDD in an existing project in about five minutes:
@@ -37,6 +45,7 @@ AISDD does not require perfect documentation before the first task.
 
 | Level | Use when | Required effort |
 |---|---|---|
+| Definition | You only have an idea | Answer guided questions |
 | Starter | You want control now | Fill 4 files |
 | Standard | The project will continue for weeks/months | Fill all core docs gradually |
 | Mature | Multiple AIs or contributors work on the project | Add ADRs, tests, compliance checks, and examples |
