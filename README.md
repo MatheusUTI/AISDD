@@ -2,10 +2,43 @@
 
 **AISDD** is a universal framework for building long-term software projects with AI assistance.
 
-It helps developers use AI tools without losing project continuity, traceability, architectural control, or context efficiency.
+It helps people and developers use AI tools without losing project continuity, traceability, architectural control, or context efficiency.
+
+AISDD exists to help transform real-world knowledge into useful software.
 
 > The AI conversation is temporary.  
 > The repository is the source of truth.
+
+## Who is AISDD for?
+
+AISDD can be used by anyone building software with AI.
+
+It is useful for:
+
+- domain experts who understand a real problem;
+- non-programmers who want to organize an idea safely;
+- developers who want better continuity and governance;
+- teams using AI agents across long-running projects;
+- solo builders turning operational knowledge into software.
+
+You do not need to start by learning the whole framework.
+
+You can start by describing the problem.
+
+```txt
+Problem → Questions → First docs → One safe task → Validation → Continuity
+```
+
+## Two ways to start
+
+| Mode | Best for | Start here |
+|---|---|---|
+| Problem-First Mode | You have a real problem but little structure | [`docs/PROBLEM_FIRST_START.md`](docs/PROBLEM_FIRST_START.md) |
+| Developer Mode | You want the full AISDD workflow, docs, tasks, checks, and guardrails | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
+
+Problem-First Mode is the lowest-friction entrypoint.
+
+Developer Mode remains the deepest way to use AISDD.
 
 ## AISDD in 60 seconds
 
@@ -19,7 +52,12 @@ AISDD keeps AI-assisted development grounded by moving project memory out of cha
 
 ## Start today: ignore 80% of the framework
 
-To start using AISDD today, copy the docs template and fill only four files:
+To start from a real-world problem, use the Problem-First guide:
+
+- [`docs/PROBLEM_FIRST_START.md`](docs/PROBLEM_FIRST_START.md)
+- [`templates/prompts/PROBLEM_FIRST_PROMPT.md`](templates/prompts/PROBLEM_FIRST_PROMPT.md)
+
+To start as a developer or agent workflow, copy the docs template and fill only four files:
 
 ```bash
 mkdir -p docs
@@ -96,6 +134,7 @@ This table is only a navigation shortcut. If you are deciding what to copy into 
 
 | Situation | Start with |
 |---|---|
+| You have a real problem but do not know how to structure a software project yet | [`docs/PROBLEM_FIRST_START.md`](docs/PROBLEM_FIRST_START.md) |
 | You only have a rough project idea | [`docs/PROJECT_DEFINITION.md`](docs/PROJECT_DEFINITION.md) |
 | You already have a simple project | [`docs/QUICK_START.md`](docs/QUICK_START.md) |
 | You already have a complex or messy project | [`docs/RECOVERY_MODE.md`](docs/RECOVERY_MODE.md) |
@@ -118,6 +157,7 @@ This table is only a navigation shortcut. If you are deciding what to copy into 
 | An agent framework | Works with ChatGPT, Claude, Gemini, Cursor, Windsurf, Copilot, local agents, and future tools |
 | A greenfield-only method | Includes Recovery Mode for projects already in progress |
 | Unmanaged vibe coding | Adds guardrails for testing, architecture, security, privacy, and human responsibility |
+| A developer-only process | Helps domain experts and developers transform knowledge into software with AI |
 
 ## Core vs Advanced
 
@@ -281,6 +321,7 @@ AISDD is in early development.
 Current focus:
 
 - make adoption extremely simple;
+- support problem-first starts for non-programmers, domain experts, developers, and teams;
 - support new and already-started projects;
 - validate AISDD through Casa em Dia and Roteirizador;
 - improve examples;
