@@ -1,16 +1,25 @@
 # AISDD Examples
 
-This directory contains example project structures and dogfooding cases.
+This directory should contain examples that demonstrate AISDD as lasting software project memory.
 
-## Minimal structure examples
+AISDD examples should not be generic placeholder folders.
 
-- `android-app`
-- `web-app`
-- `backend-api`
-- `desktop-app`
+Each example should show at least one of:
 
-These examples are intentionally minimal and technology-neutral.
+- project memory preserved in repository docs;
+- continuity across AI sessions;
+- FACTS / ASSUMPTIONS / UNKNOWNS / RISKS usage;
+- handoff quality;
+- Recovery Mode usage;
+- Prompt Maturity improvement;
+- evidence from a real or realistic project.
 
 ## Dogfooding cases
 
 - `casa-em-dia-recovery-dogfooding` — public Recovery Mode validation case based on a real Android project, without proprietary source code.
+
+## Example quality rule
+
+Do not add empty placeholder examples.
+
+A useful example should prove how AISDD helps a project continue safely over time.
