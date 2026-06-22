@@ -77,6 +77,35 @@ Use this when the project has real business rules, modules, contracts, or integr
 | `docs/03_CURRENT_STATE.md` | Real project state, not the idealized state |
 | `docs/06_DECISIONS_LOG.md` | ADR-style decision history |
 
+## Engineering guardrails layer
+
+Use this when AI can generate code faster than the project can safely validate it.
+
+This layer is especially important when:
+
+- the project is moving toward production use;
+- user data, business data, money, logistics, scheduling, or shared resources are involved;
+- manual testing is becoming insufficient;
+- performance, scale, concurrency, or security risks exist;
+- the project uses an LLM at runtime;
+- privacy or LGPD-like requirements may apply.
+
+| Artifact | Purpose |
+|---|---|
+| `docs/ENGINEERING_GUARDRAILS.md` | Engineering, testing, security, privacy, and responsibility guardrails for AI-assisted software |
+| `docs/11_TEST_STRATEGY.md` | Defines how automated and manual testing should evolve |
+| `docs/05_ACCEPTANCE_CHECKS.md` | Converts expected behavior into repeatable acceptance checks |
+| `docs/08_KNOWN_ISSUES.md` | Records risks, technical debt, and limitations explicitly |
+| `docs/06_DECISIONS_LOG.md` | Records architecture/security trade-offs and accepted risks |
+
+Engineering guardrails answer five questions:
+
+1. What could break beyond the happy path?
+2. What proves the change did not regress existing behavior?
+3. What security, privacy, or data risks exist?
+4. What assumptions may fail under scale, concurrency, or production use?
+5. Who is responsible for accepting the AI-generated change?
+
 ## Recovery layer
 
 Use this when the project already exists and was not started with AISDD.
