@@ -29,6 +29,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Recovery Mode | Makes AISDD usable in projects that already exist and are becoming complex | Added |
 | Recovery snapshot accuracy metric | Measures whether Recovery mapped the real project correctly | Added |
 | Casa em Dia Recovery dogfooding baseline | Starts evidence collection without claiming code-audited accuracy | Added |
+| Engineering guardrails | Adds testing, architecture, security, privacy, performance, and responsibility boundaries for AI-generated code | Added |
 | Complete practical example project | Helps users understand AISDD by copying a real example | Planned |
 | Compliance checklist | Makes adoption reviewable and repeatable | Planned |
 | Documentation maintenance guide | Prevents non-loaded docs from becoming stale | Added |
@@ -43,6 +44,8 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | End-to-end example project | Demonstrates AISDD working through multiple cycles | Planned |
 | Roteirizador dogfooding report | Validates AISDD in a business-rule-heavy internal tool | Planned |
 | PML reports for Casa em Dia and Roteirizador | Shows whether prompts are actually getting smaller | Planned |
+| Security checklist template | Turns engineering guardrails into a reusable project document when security risk grows | Planned |
+| Performance and non-functional requirements template | Helps projects record data volume, concurrency, scale, memory, and operational constraints | Planned |
 | Release and versioning policy | Defines how AISDD changes are published | Planned |
 | Governance rules for core changes | Clarifies what counts as sufficient validation | Added initial policy |
 | More dogfooding reports | Replaces assumptions with usage evidence | Planned |
@@ -53,6 +56,7 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Item | Why it matters | Status |
 |---|---|---|
 | Agent integration patterns | Helps autonomous and semi-autonomous agents use AISDD safely | Future |
+| AI runtime security guidance | Expands prompt injection, prompt leaking, unsafe tool calling, and LLM boundary rules | Future |
 | More example project types | Shows AISDD across different stacks and domains | Future |
 | Full Portuguese translation | Expands accessibility for Brazilian developers | Future |
 | Tooling package | Makes setup and validation easier | Future |
@@ -68,7 +72,8 @@ The current focus is:
 5. Measure whether prompt context decreases over time.
 6. Reduce documentation maintenance friction.
 7. Improve examples, especially handoff and end-to-end usage.
-8. Keep the framework vendor-independent and stack-independent.
+8. Strengthen engineering, testing, security, privacy, and responsibility guardrails.
+9. Keep the framework vendor-independent and stack-independent.
 
 ## Change policy
 
