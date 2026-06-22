@@ -105,6 +105,7 @@ This table is only a navigation shortcut. If you are deciding what to copy into 
 | You want to validate AISDD in practice | [`docs/DOGFOODING_METRICS.md`](docs/DOGFOODING_METRICS.md) |
 | You want to see a filled handoff example | [`examples/HANDOFF_EXAMPLE.md`](examples/HANDOFF_EXAMPLE.md) |
 | You want to prevent stale documentation | [`docs/DOCUMENTATION_MAINTENANCE.md`](docs/DOCUMENTATION_MAINTENANCE.md) |
+| You want engineering, testing, security, and responsibility guardrails | [`docs/ENGINEERING_GUARDRAILS.md`](docs/ENGINEERING_GUARDRAILS.md) |
 | You want to see priorities | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
 
 ## How AISDD is different
@@ -116,6 +117,7 @@ This table is only a navigation shortcut. If you are deciding what to copy into 
 | A spec document | Separates facts, assumptions, unknowns, and risks every cycle |
 | An agent framework | Works with ChatGPT, Claude, Gemini, Cursor, Windsurf, Copilot, local agents, and future tools |
 | A greenfield-only method | Includes Recovery Mode for projects already in progress |
+| Unmanaged vibe coding | Adds guardrails for testing, architecture, security, privacy, and human responsibility |
 
 ## Core vs Advanced
 
@@ -126,6 +128,7 @@ AISDD is layered.
 | Core | You want control today | `00_PROJECT_RULES`, `04_NEXT_TASK`, `07_HANDOFF`, `09_FILE_INDEX` |
 | Safety | Regressions or hallucinations are risky | `ACCEPTANCE_CHECKS`, `KNOWN_ISSUES`, anti-hallucination policy |
 | Product/Architecture | Business rules and structure matter | `PRODUCT_SPEC`, `ARCHITECTURE`, `CURRENT_STATE`, `DECISIONS_LOG` |
+| Engineering Guardrails | AI can generate code faster than the project can safely validate it | `ENGINEERING_GUARDRAILS`, `TEST_STRATEGY`, security and privacy review |
 | Recovery | The project already exists and is messy | `RECOVERY_MODE`, Recovery prompt, snapshot accuracy |
 | Mature | The project is long-running or multi-AI | dogfooding metrics, maintenance, staleness checks |
 
@@ -213,6 +216,14 @@ But not every unknown should block the work.
 
 Full policy: [`framework/AISDD_ANTI_HALLUCINATION.md`](framework/AISDD_ANTI_HALLUCINATION.md)
 
+## Engineering guardrails
+
+AISDD treats generated code as human-owned code.
+
+AI can accelerate implementation, but it does not remove the need for architecture, tests, regression control, security review, privacy review, and operational responsibility.
+
+Use [`docs/ENGINEERING_GUARDRAILS.md`](docs/ENGINEERING_GUARDRAILS.md) when a project is moving beyond prototypes, especially before production use.
+
 ## Documentation structure
 
 AISDD projects use this structure:
@@ -231,7 +242,8 @@ docs/
 ├─ 08_KNOWN_ISSUES.md
 ├─ 09_FILE_INDEX.md
 ├─ 10_TEST_CHECKLIST.md
-└─ 11_TEST_STRATEGY.md
+├─ 11_TEST_STRATEGY.md
+└─ 12_ENGINEERING_GUARDRAILS.md
 ```
 
 You do not need to fill all of them before starting.
@@ -273,6 +285,7 @@ Current focus:
 - validate AISDD through Casa em Dia and Roteirizador;
 - improve examples;
 - reduce documentation maintenance friction;
+- strengthen engineering, testing, security, and privacy guardrails;
 - keep the framework vendor-independent and stack-independent.
 
 Roadmap: [`docs/ROADMAP.md`](docs/ROADMAP.md)
