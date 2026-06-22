@@ -30,13 +30,32 @@ You do not need to start with technology.
 You can start with the problem.
 ```
 
+## Interview, not form filling
+
+The initial questionnaire is not something the user must answer alone.
+
+For many users, especially beginners, a formal questionnaire will be too hard at the beginning.
+
+That is expected.
+
+The LLM should use the questionnaire as an internal guide and interview the user gradually.
+
+```txt
+The interviewer extracts structure.
+The user provides reality.
+```
+
+If the user says "I don't know", the LLM should register the answer as `UNKNOWN` and continue with a smaller question.
+
+See: [`docs/INTERVIEW_MODE.md`](INTERVIEW_MODE.md)
+
 ## Two valid modes
 
 AISDD supports two complementary usage modes.
 
 | Mode | Best for | How it works |
 |---|---|---|
-| Problem-First Mode | Users who have a problem but little structure | The LLM asks questions, extracts rules, and creates the first AISDD documents |
+| Problem-First Mode | Users who have a problem but little structure | The LLM asks adaptive questions, extracts rules, and creates the first AISDD documents |
 | Developer Mode | Developers, agents, and advanced users | The user works directly with AISDD docs, templates, tasks, checks, and guardrails |
 
 Problem-First Mode is not a weaker version of AISDD.
@@ -50,7 +69,7 @@ Developer Mode remains the deepest and most powerful way to use the framework.
 ```txt
 Real problem
 ↓
-Initial questionnaire
+Guided interview
 ↓
 LLM organizes the answers
 ↓
@@ -79,23 +98,46 @@ The user does need to provide honest answers about:
 - what defines success;
 - what is still unknown.
 
-## Initial questionnaire
+Partial answers are allowed.
 
-Use this questionnaire when starting from a problem instead of an existing project.
+Uncertainty is allowed.
 
-### 1. Problem
+The LLM must not force fake certainty.
 
-What problem are you trying to solve?
+## Internal questionnaire
 
-Describe it in normal language.
+Use this questionnaire as an internal interview guide when starting from a problem instead of an existing project.
 
-### 2. Current process
+Do not ask all questions at once.
 
-How is this problem handled today?
+Ask one question at a time for beginners.
 
-Mention tools, people, spreadsheets, messages, manual steps, systems, or workarounds.
+Ask at most three questions at a time for experienced users.
 
-### 3. Users
+### 1. Situation
+
+Which option best describes the user's situation?
+
+- only an idea;
+- real problem, no software yet;
+- existing prototype;
+- messy or fragile project;
+- developer starting a structured project;
+- unsure.
+
+### 2. Problem
+
+What problem is the user trying to solve?
+
+Allow normal language.
+
+### 3. Current process or current state
+
+For new projects: how is this handled today?
+
+For existing projects: what exists now and what is difficult to continue?
+
+### 4. Users
 
 Who will use the software?
 
@@ -103,17 +145,17 @@ Who benefits from it?
 
 Who may be affected by mistakes?
 
-### 4. Pain
+### 5. Pain
 
 What makes the current process slow, risky, expensive, confusing, or repetitive?
 
-### 5. Desired result
+### 6. Desired result
 
-What should the software help you do?
+What should the software help the user do?
 
-Describe the expected outcome, not the technology.
+Focus on outcome, not technology.
 
-### 6. Rules
+### 7. Rules
 
 What rules must the software respect?
 
@@ -127,7 +169,7 @@ Examples:
 - required fields;
 - business exceptions.
 
-### 7. Forbidden outcomes
+### 8. Forbidden outcomes
 
 What must never happen?
 
@@ -139,7 +181,7 @@ Examples:
 - approving something without confirmation;
 - exposing sensitive information.
 
-### 8. Inputs
+### 9. Inputs
 
 What information enters the system?
 
@@ -154,7 +196,7 @@ Examples:
 - barcode scans;
 - photos.
 
-### 9. Outputs
+### 10. Outputs
 
 What should the system produce?
 
@@ -168,13 +210,13 @@ Examples:
 - histories;
 - notifications.
 
-### 10. Validation
+### 11. Validation
 
-How will you know the first version worked?
+How will the user know the first version helped?
 
 List observable checks.
 
-### 11. Constraints
+### 12. Constraints
 
 What limitations exist?
 
@@ -187,9 +229,9 @@ Examples:
 - must avoid paid services;
 - must be easy for non-technical users.
 
-### 12. Unknowns
+### 13. Unknowns
 
-What do you still not know?
+What is still unknown?
 
 Unknowns are allowed.
 
@@ -200,27 +242,50 @@ AISDD requires them to be named instead of hidden.
 Copy this prompt into ChatGPT, Gemini, Claude, AI Studio, Cursor, or another LLM.
 
 ```txt
-I want to start a software project using AISDD in Problem-First Mode.
+I want to start or organize a software project using AISDD Interview Mode.
 
 Do not write code yet.
 
-Your job is to interview me, one small group of questions at a time, and transform my answers into an initial AISDD project structure.
+Your job is to interview me and transform my answers into an initial AISDD project structure.
 
-Rules:
-- Start from the problem, not the technology.
-- Ask concise questions.
-- Do not assume business rules silently.
-- Separate FACTS, ASSUMPTIONS, UNKNOWNS, and RISKS.
-- If critical information is missing, ask before proceeding.
+Core rules:
+- Start from the problem or current project state, not from technology.
 - Keep cognitive load low.
-- At the end, generate the first versions of:
-  - docs/00_PROJECT_RULES.md
-  - docs/01_PRODUCT_SPEC.md
-  - docs/03_CURRENT_STATE.md
-  - docs/04_NEXT_TASK.md
-  - docs/05_ACCEPTANCE_CHECKS.md
-  - docs/07_HANDOFF.md
-  - docs/09_FILE_INDEX.md
+- Ask one question at a time if I sound beginner or uncertain.
+- Ask at most three questions at a time if I sound technical or experienced.
+- Prefer simple language and concrete examples.
+- Do not use jargon unless I demonstrate technical fluency.
+- Do not assume business rules silently.
+- Do not ask about architecture, database, APIs, stack, or folder structure before the problem is understood.
+- Do not generate code during the interview.
+- Do not generate a large architecture before the problem is understood.
+- Accept "I don't know" as a valid answer and register it as UNKNOWN.
+- Separate FACTS, ASSUMPTIONS, UNKNOWNS, and RISKS.
+- If critical information is missing, ask a smaller follow-up question.
+
+First, classify my situation by asking:
+
+Which option is closest to your situation?
+
+1. I only have an idea.
+2. I have a real problem, but no software yet.
+3. I already have a project or prototype.
+4. I have code, but it is messy or hard to continue.
+5. I am a developer and want to start in a structured way.
+6. I am not sure.
+
+Then adapt the interview.
+
+Stop the interview when you have enough information to define one safe next task.
+
+At the end, generate the first versions of:
+- docs/00_PROJECT_RULES.md
+- docs/01_PRODUCT_SPEC.md
+- docs/03_CURRENT_STATE.md
+- docs/04_NEXT_TASK.md
+- docs/05_ACCEPTANCE_CHECKS.md
+- docs/07_HANDOFF.md
+- docs/09_FILE_INDEX.md
 
 The first implementation task must be small, testable, and safe.
 ```
