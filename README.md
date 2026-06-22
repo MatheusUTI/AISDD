@@ -1,13 +1,41 @@
 # AISDD — AI Spec-Driven Development Framework
 
-**AISDD** is a universal framework for building long-term software projects with AI assistance.
+**AISDD turns AI conversations into lasting software project memory.**
 
-It helps people and developers use AI tools without losing project continuity, traceability, architectural control, or context efficiency.
+AI can generate code quickly.
 
-AISDD exists to help transform real-world knowledge into useful software.
+But chats forget, agents drift, and long-running projects lose continuity when knowledge stays trapped in temporary conversations.
+
+AISDD moves project memory into versioned repository files so software can evolve safely across sessions, tools, agents, and people.
 
 > The AI conversation is temporary.  
 > The repository is the source of truth.
+
+## Core promise
+
+AISDD is best for real software projects that need:
+
+- continuity across AI sessions;
+- traceability of decisions, risks, assumptions, and unknowns;
+- safe execution one task at a time;
+- vendor-independent project memory;
+- human validation and governance over AI-generated work.
+
+```txt
+Problem or codebase
+↓
+Interview or docs
+↓
+Repository memory
+↓
+One safe task
+↓
+Validation
+↓
+Handoff
+↓
+Continuation
+```
 
 ## Who is AISDD for?
 
@@ -25,15 +53,11 @@ You do not need to start by learning the whole framework.
 
 You can start by describing the problem.
 
-```txt
-Problem → Questions → First docs → One safe task → Validation → Continuity
-```
-
 ## Two ways to start
 
 | Mode | Best for | Start here |
 |---|---|---|
-| Problem-First Mode | You have a real problem but little structure | [`docs/PROBLEM_FIRST_START.md`](docs/PROBLEM_FIRST_START.md) |
+| Problem-First / Interview Mode | You have a real problem but little structure | [`docs/PROBLEM_FIRST_START.md`](docs/PROBLEM_FIRST_START.md) |
 | Developer Mode | You want the full AISDD workflow, docs, tasks, checks, and guardrails | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
 
 Problem-First Mode is the lowest-friction entrypoint.
@@ -44,17 +68,20 @@ Developer Mode remains the deepest way to use AISDD.
 
 AISDD keeps AI-assisted development grounded by moving project memory out of chat and into versioned repository files.
 
-1. Write the project rules in the repo.
-2. Give the AI one task at a time.
-3. Force the AI to separate facts, assumptions, unknowns, and risks.
-4. Update the handoff before ending the session.
-5. Continue with any compatible AI using the same repository context.
+1. Start from a real problem or an existing codebase.
+2. Use an LLM interview or AISDD docs to extract project knowledge.
+3. Give the AI one task at a time.
+4. Force the AI to separate facts, assumptions, unknowns, and risks.
+5. Validate the result before continuing.
+6. Update the handoff before ending the session.
+7. Continue with any compatible AI using the same repository context.
 
 ## Start today: ignore 80% of the framework
 
 To start from a real-world problem, use the Problem-First guide:
 
 - [`docs/PROBLEM_FIRST_START.md`](docs/PROBLEM_FIRST_START.md)
+- [`docs/INTERVIEW_MODE.md`](docs/INTERVIEW_MODE.md)
 - [`templates/prompts/PROBLEM_FIRST_PROMPT.md`](templates/prompts/PROBLEM_FIRST_PROMPT.md)
 
 To start as a developer or agent workflow, copy the docs template and fill only four files:
