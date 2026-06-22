@@ -306,6 +306,10 @@ See: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## License
 
-MIT License.
+AISDD is licensed under AGPL-3.0-only.
 
-See [`LICENSE`](LICENSE).
+The intent is to keep AISDD open, attributable, and available to the community.
+
+You may study, use, adapt, and share it, but modified redistributions and network-service versions must respect the same open license terms.
+
+See [LICENSE](LICENSE).
