@@ -95,7 +95,7 @@ UX-001 was implemented successfully, but post-task documentation had small incon
 **Date:** 2026-10-15  
 **Status:** repeated case evidence
 
-INT-001 used strong repository context and a tiny startup prompt, yet the implementing model still introduced plausible but unsupported normalizations (series assumption, unsafe status fallback, synthetic current-unit/occurrence behavior and other overconfident defaults).
+INT-001 used strong repository context and a tiny startup prompt, yet the implementing model still introduced plausible but unsupported normalizations.
 
 Useful distinction:
 
@@ -112,20 +112,9 @@ The independent review gate prevented these assumptions from becoming code uncha
 **Date:** 2026-10-15  
 **Status:** repeated/important case evidence
 
-INT-002 reportedly compiled and passed its eight required tests, but cross-AI static review still found meaningful fidelity gaps:
-
-- factual status description/raw text was discarded when DTOs were reduced to an enum;
-- public timing/cargo fields were parsed but silently dropped by the domain mapper;
-- missing occurrence code became the synthetic string `EVENTO`;
-- `texto - texto` could be over-parsed as `Cidade - UF`;
-- timeline coherence was not enforced by the mapper;
-- runtime mocks contradicted the full CTRC format and product neutrality.
-
-The tests were not false; they simply encoded an incomplete acceptance surface.
+INT-002 compiled/passed its requested tests, but static review still found meaningful fidelity gaps in status preservation, fields silently dropped, synthetic fallbacks, location parsing and timeline coherence.
 
 Potential implication:
-
-AISDD review should ask both:
 
 ```txt
 Do the tests pass?
@@ -140,7 +129,7 @@ This is especially relevant for adapters/mappers, where data loss can compile pe
 **Date:** 2026-10-15  
 **Status:** positive case evidence
 
-Both INT-001 and INT-002 were preserved rather than reverted. Review findings were converted into explicit repository gates (`R1–R11`, then `G1–G6`) and into one singular remediation task.
+Review findings were converted into explicit repository gates and singular remediation tasks rather than discarding the useful implementation.
 
 Observed pattern:
 
@@ -156,16 +145,75 @@ Small remediation task
 Continue architecture
 ```
 
-This appears compatible with AISDD's incremental philosophy and avoids losing useful generated work because a few semantic details were wrong.
-
 ### OBS-012 — Checkpoint/model fallback can preserve an AISDD cycle without prompt restatement
 
 **Date:** 2026-10-15  
 **Status:** environment-specific case evidence
 
-During INT-002, Gemini 3.8 Flash edited most files and then hit a quota limit. AI Studio resumed from checkpoint with Gemini 3.6 Flash, which completed the remaining documentation/handoff steps without the owner re-explaining the task.
+During INT-002, Gemini 3.8 Flash hit quota and AI Studio resumed from checkpoint with Gemini 3.6 Flash without the owner re-explaining the task.
 
-This suggests repository memory plus execution checkpointing can make model fallback less disruptive. The behavior is specific to AI Studio and should not be promoted to an AISDD rule without evidence from other environments.
+This is environment-specific and should not be promoted to a framework rule without broader evidence.
+
+### OBS-013 — Repository memory allows implementation ownership to move between tools
+
+**Date:** 2026-10-15  
+**Status:** strong case evidence
+
+After Android contract work, quota pressure made Gemini less suitable for heavy development. Implementation ownership moved to ChatGPT operating directly through GitHub for backend architecture, skeleton and SSW connector work.
+
+No new product bootstrap was needed. The new implementer reconstructed the active task from repository state and continued through INT-003, INT-004, INT-005 and INT-006 preparation.
+
+Observed transition:
+
+```txt
+Gemini / AI Studio = primary implementer
+        ↓ quota/tool constraint
+GitHub canonical memory remains unchanged
+        ↓
+ChatGPT / GitHub = primary backend implementer
+AI Studio = Android preview/build/quick-fix surface
+```
+
+Potential implication: AISDD's useful portability target is not “any model behaves identically”; it is “the project can reassign roles without reconstructing its history in prompts.”
+
+### OBS-014 — Tool scarcity can be handled by changing role allocation instead of degrading project context
+
+**Date:** 2026-10-15  
+**Status:** positive case evidence
+
+When premium AI Studio quotas became scarce, the response was not to compress or discard project memory. Instead, expensive/limited tooling was reserved for work where it had unique value (Android visualisation/build), while repository-native architecture/backend work moved elsewhere.
+
+Potential value:
+
+```txt
+scarce tool
+→ narrow to comparative advantage
+not
+→ make every task consume the scarce tool
+```
+
+This suggests AISDD can support cost-aware execution strategies without changing the source-of-truth model.
+
+### OBS-015 — External evidence gates should separate “prepared” from “validated”
+
+**Date:** 2026-10-15  
+**Status:** important case evidence
+
+INT-005 produced a real SSW connector from audited evidence, but live facts such as current layout, actual latency and not-found signature cannot be proven without authorised credentials and test CTRCs.
+
+INT-006 therefore separates:
+
+```txt
+code prepared
++ offline tests green
++ CI/container green
+≠
+live integration validated
+```
+
+The project added a preflight, sanitised smoke helper, metrics, leak checks and runbook while keeping the task open on the external evidence.
+
+Potential implication: AISDD acceptance states may benefit from explicit categories such as `prepared`, `validated offline`, `validated live`, and `blocked by external evidence`, rather than a single binary done/not-done state.
 
 ## Candidate improvements
 
@@ -177,7 +225,9 @@ Do not promote these observations into universal requirements yet. Collect more 
 - publish-only integration;
 - uploaded/static project snapshots;
 - local CLI agents;
-- model/checkpoint fallback behavior.
+- model/checkpoint fallback behavior;
+- implementer/tool-role migration;
+- tasks gated by private external systems or credentials.
 
 Wait for more implementation cycles before proposing changes to:
 
@@ -189,4 +239,5 @@ Wait for more implementation cycles before proposing changes to:
 - response format;
 - dogfooding metrics;
 - whether contract/mapper tasks should receive a dedicated independent review gate;
-- whether test plans should explicitly include semantic-information-preservation checks.
+- whether test plans should explicitly include semantic-information-preservation checks;
+- whether acceptance should model external-evidence states explicitly.
