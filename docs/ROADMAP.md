@@ -25,10 +25,11 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 | Starter prompt deduplication | Reduces prompt drift against the universal prompt | Added |
 | Refactor safety boundaries | Clarifies when not to refactor | Added |
 | Tutorial maintenance triggers | Aligns long-term tutorial with maintenance policy | Added |
-| Real project playbooks | Makes AISDD usable in Casa em Dia and Roteirizador | Added |
+| Real project playbooks | Makes AISDD usable in FreteOps, Casa em Dia, and Roteirizador | Added |
 | Recovery Mode | Makes AISDD usable in projects that already exist and are becoming complex | Added |
 | Recovery snapshot accuracy metric | Measures whether Recovery mapped the real project correctly | Added |
 | Casa em Dia Recovery dogfooding baseline | Starts evidence collection without claiming code-audited accuracy | Added |
+| FreteOps end-to-end dogfooding baseline | Starts a near-greenfield, cross-AI case tracked from first development day toward release | Added |
 | Engineering guardrails | Adds testing, architecture, security, privacy, performance, and responsibility boundaries for AI-generated code | Added |
 | Complete practical example project | Helps users understand AISDD by copying a real example | Planned |
 | Compliance checklist | Makes adoption reviewable and repeatable | Planned |
@@ -40,10 +41,12 @@ AISDD should evolve through real usage, dogfooding, and validated feedback.
 
 | Item | Why it matters | Status |
 |---|---|---|
+| FreteOps first 10-task dogfooding report | Tests prompt shrinkage, handoff quality, scope control, and cross-AI continuation with enough cycles for initial conclusions | Active |
+| FreteOps release-lifecycle report | Validates whether repository memory survives real integration, device builds, internal distribution, and post-release work | Planned |
 | Source-audited Casa em Dia Recovery report | Replaces baseline claims with real source-checked results | Planned |
 | End-to-end example project | Demonstrates AISDD working through multiple cycles | Planned |
 | Roteirizador dogfooding report | Validates AISDD in a business-rule-heavy internal tool | Planned |
-| PML reports for Casa em Dia and Roteirizador | Shows whether prompts are actually getting smaller | Planned |
+| PML reports for FreteOps, Casa em Dia, and Roteirizador | Shows whether prompts are actually getting smaller | Planned |
 | Security checklist template | Turns engineering guardrails into a reusable project document when security risk grows | Planned |
 | Performance and non-functional requirements template | Helps projects record data volume, concurrency, scale, memory, and operational constraints | Planned |
 | Release and versioning policy | Defines how AISDD changes are published | Planned |
@@ -68,12 +71,15 @@ The current focus is:
 1. Make AISDD easy to adopt.
 2. Make the adoption path obvious enough that users do not need explanation.
 3. Support new, existing, and long-running projects.
-4. Validate AISDD through Casa em Dia and Roteirizador.
-5. Measure whether prompt context decreases over time.
-6. Reduce documentation maintenance friction.
-7. Improve examples, especially handoff and end-to-end usage.
-8. Strengthen engineering, testing, security, privacy, and responsibility guardrails.
-9. Keep the framework vendor-independent and stack-independent.
+4. Validate near-greenfield end-to-end use through FreteOps.
+5. Validate Recovery Mode through Casa em Dia.
+6. Validate business-rule-heavy continuity through Roteirizador.
+7. Measure whether prompt context decreases over time.
+8. Test cross-AI continuation with repository memory rather than chat recap.
+9. Reduce documentation maintenance friction.
+10. Improve examples, especially handoff and end-to-end usage.
+11. Strengthen engineering, testing, security, privacy, and responsibility guardrails.
+12. Keep the framework vendor-independent and stack-independent.
 
 ## Change policy
 
