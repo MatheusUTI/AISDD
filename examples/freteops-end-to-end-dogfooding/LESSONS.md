@@ -75,9 +75,45 @@ The AISDD repository should contain framework-validation evidence.
 
 This avoids contaminating the product with framework research while preserving evidence for AISDD evolution.
 
+### OBS-005 — Repository-driven execution has an environment-access precondition
+
+**Date:** 2026-10-15  
+**Status:** active observation
+
+The first PML-4 startup attempt did not fail because the task documentation was insufficient. It failed before execution because Google AI Studio's active project workspace did not contain repository changes made externally.
+
+The observed integration is asymmetric:
+
+```txt
+AI Studio workspace → GitHub
+GitHub -/→ active AI Studio workspace
+```
+
+Gemini could publish what it generated to GitHub, but it could not read the AISDD files that had been added to GitHub outside the AI Studio workspace.
+
+**Immediate workflow implication for FreteOps:**
+
+- bootstrap the AISDD `docs/` directory into the AI Studio workspace once;
+- after bootstrap, Gemini becomes the writer of FreteOps code and project-memory docs inside that workspace;
+- ChatGPT audits FreteOps from GitHub and proposes changes, but should avoid directly changing FreteOps project-memory files unless a manual resynchronization into AI Studio is planned;
+- ChatGPT continues to write AISDD framework/dogfooding evidence in the AISDD repository.
+
+**Potential framework implication:**
+
+AISDD may need to distinguish `repository is the source of truth` from `the current AI can access the source of truth`.
+
+A future portability/workspace guide may need an explicit synchronization preflight for tools with one-way or isolated workspaces.
+
+This is not yet a core-rule change. More evidence is needed across tools.
+
 ## Candidate improvements
 
-None promoted yet.
+Do not promote OBS-005 into a universal requirement yet. Collect more evidence from environments with:
+
+- full Git repository access;
+- one-way publish-only integration;
+- uploaded/static project snapshots;
+- local CLI agents.
 
 Wait for multiple implementation cycles before proposing changes to:
 
