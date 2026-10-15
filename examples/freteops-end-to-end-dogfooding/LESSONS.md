@@ -75,43 +75,69 @@ The AISDD repository should contain framework-validation evidence.
 
 This avoids contaminating the product with framework research while preserving evidence for AISDD evolution.
 
-### OBS-005 — Repository-driven execution has an environment-access precondition
+### OBS-005 — Repository-driven execution depends on actual repository access, not only UI integration
 
 **Date:** 2026-10-15  
-**Status:** active observation
+**Status:** revised observation / verification pending
 
-The first PML-4 startup attempt did not fail because the task documentation was insufficient. It failed before execution because Google AI Studio's active project workspace did not contain repository changes made externally.
+The first PML-4 startup attempt did not fail because the task documentation was insufficient. Gemini correctly reported that `docs/START_HERE.md` and `docs/04_NEXT_TASK.md` were absent from its active workspace.
 
-The observed integration is asymmetric:
+Our first interpretation was that AI Studio supported only:
 
 ```txt
 AI Studio workspace → GitHub
 GitHub -/→ active AI Studio workspace
 ```
 
-Gemini could publish what it generated to GitHub, but it could not read the AISDD files that had been added to GitHub outside the AI Studio workspace.
+A later direct capability check changed that understanding. Gemini reported that the AI Studio execution environment has `git` and `curl` available and can explicitly download/synchronize files from GitHub. For a private repository it requests authentication, such as a read-scoped GitHub token.
+
+This means the UI-level GitHub integration may still be publish-oriented, while the execution environment itself may provide an explicit pull path:
+
+```txt
+GitHub
+  ↓ explicit git/curl sync
+AI Studio workspace
+  ↓ implementation
+GitHub
+```
+
+**Important:** this inbound path is reported by Gemini but is not yet considered validated until an actual authenticated synchronization succeeds without corrupting or replacing local project state.
 
 **Immediate workflow implication for FreteOps:**
 
-- bootstrap the AISDD `docs/` directory into the AI Studio workspace once;
-- after bootstrap, Gemini becomes the writer of FreteOps code and project-memory docs inside that workspace;
-- ChatGPT audits FreteOps from GitHub and proposes changes, but should avoid directly changing FreteOps project-memory files unless a manual resynchronization into AI Studio is planned;
-- ChatGPT continues to write AISDD framework/dogfooding evidence in the AISDD repository.
+- keep GitHub as the canonical project memory;
+- before an AISDD-controlled cycle, explicitly synchronize the required repository memory into AI Studio;
+- avoid pasting long-lived credentials into prompts;
+- use the narrowest practical read-only, repository-scoped authentication mechanism for inbound synchronization;
+- after sync, retry the minimal PML-4 prompt without manually repeating the task.
 
 **Potential framework implication:**
 
-AISDD may need to distinguish `repository is the source of truth` from `the current AI can access the source of truth`.
+AISDD may benefit from a small environment preflight that distinguishes:
 
-A future portability/workspace guide may need an explicit synchronization preflight for tools with one-way or isolated workspaces.
+1. repository memory exists;
+2. the current AI environment can read it;
+3. the local working copy is synchronized with it.
 
 This is not yet a core-rule change. More evidence is needed across tools.
 
+### OBS-006 — Explicit sync may preserve multi-AI project ownership better than manual file copying
+
+**Date:** 2026-10-15  
+**Status:** hypothesis to test
+
+If the reported git/curl path works, ChatGPT can continue maintaining reviewed project memory in GitHub while Gemini consumes the same memory before implementation. This would remove the need for manual `docs/` uploads and would make the repository a genuinely shared handoff boundary between AI systems.
+
+The key risk is synchronization safety: inbound sync must not silently overwrite newer AI Studio code or local uncommitted changes.
+
+A safe pattern should therefore inspect repository/workspace state before pulling and, initially, synchronize only the required AISDD docs rather than blindly replacing the entire project tree.
+
 ## Candidate improvements
 
-Do not promote OBS-005 into a universal requirement yet. Collect more evidence from environments with:
+Do not promote OBS-005 or OBS-006 into universal requirements yet. Collect more evidence from environments with:
 
 - full Git repository access;
-- one-way publish-only integration;
+- publish-only UI integration plus shell/network access;
 - uploaded/static project snapshots;
 - local CLI agents.
 
