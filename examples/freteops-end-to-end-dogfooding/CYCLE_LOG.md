@@ -10,8 +10,9 @@ A cycle should represent one meaningful project task or one AISDD workflow exper
 |---|---|---|---|---|---:|---|---:|---|
 | C000 | 2026-10-15 | Initial Android scaffold | Gemini / AI Studio | Human + ChatGPT | 0 | Completed | No | Long manual prompt carried product, stack, UI, and architecture context. This is the pre-AISDD baseline. |
 | C001 | 2026-10-15 | AISDD project-memory bootstrap | ChatGPT | Human | N/A | Prepared | Yes | Repository docs introduced immediately after first prototype. No product code change intended. |
-| C002-A | 2026-10-15 | UX-001 startup attempt | Gemini / AI Studio | Human + ChatGPT | 4 | Environment-blocked before execution | N/A | Gemini correctly reported that `docs/START_HERE.md` and `docs/04_NEXT_TASK.md` were absent from its workspace. AI Studio can publish workspace changes to GitHub but does not read/synchronize repository changes back into the active project. PML was therefore not evaluated: repository memory was unavailable to the implementer. |
-| C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 planned after workspace bootstrap | Pending | Pending | First synchronize the AISDD project docs into the AI Studio workspace. Then retry the minimal repository-driven startup prompt without adding task explanation. |
+| C002-A | 2026-10-15 | UX-001 startup attempt | Gemini / AI Studio | Human + ChatGPT | 4 | Context unavailable before execution | N/A | Gemini correctly reported that `docs/START_HERE.md` and `docs/04_NEXT_TASK.md` were absent from its active workspace. PML was therefore not evaluated because repository memory was unavailable to the implementer. |
+| C002-SYNC | 2026-10-15 | Discover inbound GitHub synchronization path | Gemini / AI Studio | Human + ChatGPT | N/A | Capability reported; verification pending | N/A | Gemini reported that the execution environment has `git` and `curl` and can download/synchronize repository files. FreteOps is private, so an authenticated read path is required. Do not count this as a product task or PML attempt. |
+| C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 planned after safe sync | Pending | Pending | First validate an explicit inbound sync of AISDD docs without overwriting newer local code. Then retry the minimal repository-driven startup prompt without adding task explanation. |
 
 ## Required fields for future cycles
 
@@ -30,7 +31,7 @@ When adding a cycle, record:
 - any repeated context that still had to be supplied manually;
 - any hallucination, scope drift, or unnecessary implementation;
 - whether the next AI could continue from repository memory alone;
-- whether the implementing environment actually had access to the repository memory it was instructed to read.
+- whether the implementing environment actually had access to synchronized repository memory.
 
 ## Cycle closure rule
 
@@ -58,4 +59,4 @@ Successful PML: 2
 
 The failure is useful evidence.
 
-If the AI cannot access the repository memory at all, classify the attempt as `environment-blocked` rather than as a PML failure. PML measures how much manual task context is needed when the documented context is actually available.
+If the AI cannot access or synchronize the repository memory at all, classify the attempt as context/environment-blocked rather than as a PML failure. PML measures how much manual task context is needed when the documented context is actually available.
