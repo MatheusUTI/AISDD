@@ -229,16 +229,23 @@ See:
 
 AISDD is being validated against real project types, not only theoretical examples.
 
-Casa em Dia is a real Android app used to validate mobile development, manual testing, feature fixes, and AI handoff.
+FreteOps is the first case intentionally tracked from the first development day toward a real release lifecycle. It validates near-greenfield adoption, cross-AI collaboration, repository-driven execution, and prompt shrinkage.
 
-Roteirizador is a real internal logistics/routing tool category used to validate business-rule-heavy workflows, imports/exports, and regression control.
+Casa em Dia validates Recovery Mode in an existing AI-assisted Android project.
+
+Roteirizador validates business-rule-heavy continuity in an existing internal logistics tool category.
 
 | Project | What it validates |
 |---|---|
-| Casa em Dia | Android app development, manual testing, feature fixes, AI handoff |
+| FreteOps | Near-greenfield Android development, cross-AI execution, PML progression, integration and release continuity |
+| Casa em Dia | Android Recovery Mode, manual testing, feature fixes, AI handoff |
 | Roteirizador | Existing complex internal tool, business rules, import/export workflows, regression control |
 
-See: [`docs/REAL_PROJECT_PLAYBOOKS.md`](docs/REAL_PROJECT_PLAYBOOKS.md)
+See:
+
+- [`docs/REAL_PROJECT_PLAYBOOKS.md`](docs/REAL_PROJECT_PLAYBOOKS.md)
+- [`examples/freteops-end-to-end-dogfooding/README.md`](examples/freteops-end-to-end-dogfooding/README.md)
+- [`examples/casa-em-dia-recovery-dogfooding/README.md`](examples/casa-em-dia-recovery-dogfooding/README.md)
 
 ## Universal AI response format
 
@@ -321,7 +328,7 @@ You do not need to fill all of them before starting.
 |---|---|
 | `scripts/init-aisdd-project.py` | Copy AISDD docs into a project |
 | `scripts/check-aisdd-docs.py` | Check whether required AISDD docs exist |
-| `scripts/check-aisdd-staleness.py` | Detect simple stale-documentation signals from Git history |
+| `scripts/check-aisdd-staleness.py` | Detect simple stale-doc warnings from Git history |
 
 ## Languages
 
@@ -350,7 +357,11 @@ Current focus:
 - make adoption extremely simple;
 - support problem-first starts for non-programmers, domain experts, developers, and teams;
 - support new and already-started projects;
-- validate AISDD through Casa em Dia and Roteirizador;
+- validate near-greenfield end-to-end use through FreteOps;
+- validate Recovery Mode through Casa em Dia;
+- validate business-rule-heavy continuity through Roteirizador;
+- measure whether prompt context decreases over time;
+- test cross-AI continuation from repository memory;
 - improve examples;
 - reduce documentation maintenance friction;
 - strengthen engineering, testing, security, and privacy guardrails;
