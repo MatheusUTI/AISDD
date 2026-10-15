@@ -15,7 +15,9 @@ A cycle should represent one meaningful project task or one AISDD workflow exper
 | C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 intended | Completed | Yes | After project memory became available in the AI Studio workspace, Gemini completed UX-001, updated project docs/handoff, and published the result to GitHub. Exact successful PML remains unclaimed until the final prompt evidence for this retry is preserved. |
 | C003-PREP | 2026-10-15 | Prepare INT-001 SSW 101 contract discovery | ChatGPT | Human | N/A | Prepared | Yes | FreteOps repository received an observed SSW 101 baseline, strengthened acceptance criteria, file index updates, and a sync preflight. Gemini can consume these changes after the human manually triggers AI Studio synchronization. |
 | C003 | 2026-10-15 | INT-001 — specify public SSW 101 API contract | Gemini / AI Studio | Human + ChatGPT | 4 | Completed with reviewer corrections required | Yes | Gemini executed from repository memory with a minimal startup prompt, created `11_SSW101_API_CONTRACT.md`, updated architecture/acceptance/handoff, and advanced to INT-002. No functional APK code changed. |
-| C003-REVIEW | 2026-10-15 | Cross-AI audit of INT-001 | ChatGPT | Human | N/A | Review gate added | Yes | Independent review found semantic risks before implementation: wrong series assumption, unsafe `EM_TRANSITO` fallback, synthetic occurrence/current-unit fallbacks, excessive non-null assumptions, and invented backend URL example. `12_INT001_REVIEW_GATE.md` now blocks INT-002 from encoding these assumptions. |
+| C003-REVIEW | 2026-10-15 | Cross-AI audit of INT-001 | ChatGPT | Human | N/A | Review gate added | Yes | Independent review found semantic risks before implementation: wrong series assumption, unsafe `EM_TRANSITO` fallback, synthetic occurrence/current-unit fallbacks, excessive non-null assumptions, and invented backend URL example. `12_INT001_REVIEW_GATE.md` blocked direct code generation until reconciliation. |
+| C004 | 2026-10-15 | INT-002 — reconcile contract and implement Android data boundary | Gemini 3.8 Flash → Gemini 3.6 Flash / AI Studio | Human + ChatGPT | 4 | Implementation completed; reviewer remediation required | Yes | The exact prompt was `Leia docs/START_HERE.md e execute somente docs/04_NEXT_TASK.md.` Gemini 3.8 edited the main code/docs, hit quota, and AI Studio resumed from checkpoint with Gemini 3.6 to finish handoff/next-task docs. DTOs, mapper, Retrofit API, HTTP repository, nullable domain, cache UI and tests were produced. |
+| C004-REVIEW | 2026-10-15 | Cross-AI audit of INT-002 | ChatGPT | Human | N/A | Review gate G1–G6 added | Yes | Static review approved the architecture but found remaining fidelity gaps: status factual text discarded, public timing/cargo fields dropped, synthetic occurrence code fallback, over-eager location parsing, timeline coherence not enforced, and mocks inconsistent with full CTRC format/product neutrality. `14_INT002_REVIEW_GATE.md` and `INT-002R` now gate backend work. |
 
 ## Required fields for future cycles
 
@@ -35,7 +37,8 @@ When adding a cycle, record:
 - any hallucination, scope drift, or unnecessary implementation;
 - whether the next AI could continue from repository memory alone;
 - whether the implementing environment actually had access to synchronized repository memory;
-- whether synchronization was automatic or required a human action.
+- whether synchronization was automatic or required a human action;
+- whether execution changed model/checkpoint because of quota or environment constraints.
 
 ## Cycle closure rule
 
