@@ -166,6 +166,54 @@ Cycle closure should evaluate not only product behavior but also internal consis
 
 This is currently case evidence, not a new mandatory AISDD phase.
 
+### OBS-009 — Strong repository context does not eliminate semantic overreach
+
+**Date:** 2026-10-15  
+**Status:** important case evidence
+
+INT-001 was executed from repository memory with almost no repeated task context. The model correctly preserved several unknowns and respected major architecture boundaries, but still introduced plausible-looking semantic assumptions that were not supported by the source evidence.
+
+Examples caught by the independent review:
+
+- assuming CTRC `serie = "1"` despite the audited parser using a three-letter prefix;
+- proposing `EM_TRANSITO` as fallback for unknown status;
+- proposing destination/status as fallback for current unit;
+- proposing a synthetic occurrence when no real occurrence exists;
+- treating optional source values as guaranteed;
+- using a concrete-looking backend hostname that had never been decided.
+
+These were not primarily context-delivery failures. The relevant facts were available in repository memory. They were **reasoning/normalization errors** introduced while turning evidence into a polished contract.
+
+**Potential implication:**
+
+AISDD may benefit from distinguishing:
+
+```txt
+context sufficiency
+≠
+semantic correctness
+```
+
+A high-PML task can still require an independent contract/acceptance review before downstream code generation, especially when the task converts messy external-system evidence into a clean domain model.
+
+The useful pattern observed here was:
+
+```txt
+Evidence baseline
+      ↓
+Implementing AI specification
+      ↓
+Repository commit
+      ↓
+Independent AI review against evidence
+      ↓
+Explicit review gate
+      ↓
+Code generation
+```
+
+This should remain case evidence until repeated on more integration/specification tasks. Do not yet turn it into a mandatory AISDD phase for every task.
+
 ## Candidate improvements
 
 Do not promote these observations into universal requirements yet. Collect more evidence from environments with:
@@ -185,4 +233,5 @@ Wait for multiple implementation cycles before proposing changes to:
 - handoff rules;
 - environment preflight rules;
 - response format;
-- dogfooding metrics.
+- dogfooding metrics;
+- whether contract/specification tasks should receive a dedicated independent review gate.
