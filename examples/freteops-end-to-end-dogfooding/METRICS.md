@@ -4,16 +4,16 @@ This file applies the generic metrics from `docs/DOGFOODING_METRICS.md` to the F
 
 ## Validation window
 
-Current state: baseline, first completed AISDD-controlled task, and verified manual bidirectional repository synchronization.
+Current state: baseline, two AISDD-controlled tasks completed, verified manual bidirectional repository synchronization, and one cross-AI semantic review gate.
 
 | Requirement | Current | Minimum before core-rule conclusions |
 |---|---:|---:|
-| AISDD-controlled real tasks completed | 1 | 10 |
-| Different task types | 1 | 3 |
-| Session handoffs | 1 observed; validation still accumulating | 3 |
-| Structural decisions | 2 observed | 2 |
-| Cross-AI continuation tests | 1 performed; human scoring still informal | 1 |
-| Prompt maturity attempts | 1 context-unavailable; 1 completed retry with exact successful PML not yet claimed | 3 valid attempts |
+| AISDD-controlled real tasks completed | 2 | 10 |
+| Different task types | 2 | 3 |
+| Session handoffs | 2 observed; validation still accumulating | 3 |
+| Structural decisions | 3 observed | 2 |
+| Cross-AI continuation tests | 2 performed | 1 |
+| Prompt maturity attempts | 1 context-unavailable; 2 repository-driven attempts | 3 valid attempts |
 
 The pre-AISDD scaffold is tracked as cycle C000 but does not count as an AISDD-controlled task.
 
@@ -24,6 +24,7 @@ The pre-AISDD scaffold is tracked as cycle C000 but does not count as an AISDD-c
 | 2026-10-15 | C000 | Initial Android scaffold | 0 | 0 | High | Most project context lived in the prompt. |
 | 2026-10-15 | C002-A | UX-001 startup | 4 | Not evaluated | None added | Gemini could not find the externally added AISDD docs in its active workspace. This does not count as a PML failure. |
 | 2026-10-15 | C002-B | UX-001 after manual workspace sync | 4 intended | Pending exact classification | No repeated task specification observed | Gemini completed UX-001 after repository memory became available. Preserve exact retry prompt before assigning successful PML conclusively. |
+| 2026-10-15 | C003 | INT-001 API-contract specification | 4 | Not yet counted as fully safe | None beyond repository sync/start instruction | Gemini completed the requested specification cycle and handoff from repository memory, but independent review found semantic corrections that had to be gated before code generation. Prompt maturity and output correctness are tracked separately. |
 
 ## Environment access note
 
@@ -39,8 +40,6 @@ AI Studio workspace
 
 Synchronization works in both directions, but changes do not propagate automatically. The human owner must explicitly trigger synchronization.
 
-This is materially different from both a fully automatic shared workspace and a one-way publish integration.
-
 Operational consequence:
 
 1. GitHub remains canonical memory.
@@ -49,8 +48,6 @@ Operational consequence:
 4. After Gemini publishes changes, the human synchronizes again before another agent relies on the new state.
 
 The synchronization click is environment/context delivery, not task explanation. Therefore it should not reduce the PML score by itself.
-
-Track environment/context delivery separately from PML so synchronization mechanics are not misclassified as documentation failures or prompt overhead.
 
 ## Prompt-size baseline
 
@@ -64,22 +61,15 @@ Qualitative baseline:
 - exclusions included manually;
 - architecture expectations included manually.
 
-For subsequent tasks, record prompt characters where practical.
-
-Suggested comparison:
-
-```txt
-prompt_reduction_ratio = current_prompt_chars / baseline_prompt_chars
-```
-
-This is a project-specific observation metric, not yet an AISDD core metric.
+Later repository-driven cycles required only startup instructions plus synchronization, demonstrating strong prompt shrinkage in this case. Exact ratio is not claimed because the original C000 token/character count was not preserved.
 
 ## Handoff tracking
 
 | Date | Cycle | Meaningful boundary? | Handoff updated? | Accurate on review? | Notes |
 |---|---|---:|---:|---:|---|
 | 2026-10-15 | C001 | Yes | Yes | Yes enough to continue | Initial project-memory bootstrap established the handoff structure. |
-| 2026-10-15 | C002-B | Yes | Yes | Yes with minor documentation drift | Gemini closed UX-001 and updated handoff; ChatGPT could reconstruct project state from GitHub, while also identifying small consistency issues that were then corrected. |
+| 2026-10-15 | C002-B | Yes | Yes | Yes with minor documentation drift | Gemini closed UX-001 and updated handoff; ChatGPT reconstructed state from GitHub and corrected documentation drift. |
+| 2026-10-15 | C003 | Yes | Yes | Structurally accurate, semantically overconfident in some fallbacks | Gemini closed INT-001 and advanced INT-002, but reviewer gate was required before coding. |
 
 ## Decision-log tracking
 
@@ -89,34 +79,38 @@ This is a project-specific observation metric, not yet an AISDD core metric.
 | 2026-10-15 | Mobile client must not contain external-system credentials or fragile integration logic | Yes | Architectural boundary for future API work. |
 | 2026-10-15 | Google services beyond AI Studio are not default dependencies | Yes | Firebase or other Google services require explicit need and decision. |
 | 2026-10-15 | GitHub remains canonical project memory; AI Studio synchronization is bidirectional but manually triggered | Yes | Added to `START_HERE.md` as a preflight requirement. |
+| 2026-10-15 | Cross-AI semantic review may gate implementation after a specification cycle | Case-level only | Added as `docs/12_INT001_REVIEW_GATE.md`; not yet promoted to AISDD core. |
 
 ## Missing-info friction
 
-No valid domain `MISSING INFO` sample yet.
+A meaningful domain-unknown sample now exists in INT-001:
 
-The C002-A response was not domain missing-info friction. Gemini accurately identified unavailable required files, which was a context-delivery problem.
+- NF → CTRC resolution was not supported by the factual baseline;
+- Gemini preserved it as `UNKNOWN` / `NF_RESOLUTION_UNSUPPORTED` rather than inventing an upstream flow.
 
-Record future meaningful `MISSING INFO` events using the generic AISDD classification:
-
-- Critical;
-- Assumable;
-- Cosmetic.
+This is positive evidence for explicit unknown handling.
 
 ## Cross-AI continuation evidence
 
-FreteOps already provides a practical cross-AI boundary:
+### Test 1 — UX-001
 
 1. Gemini implemented UX-001 in AI Studio.
-2. Gemini updated project docs and handoff.
-3. The result reached GitHub.
-4. ChatGPT reviewed repository state rather than relying on Gemini's private conversation.
-5. ChatGPT correctly identified the completed UX work plus documentation drift and prepared the next contract-discovery cycle.
+2. Result and handoff reached GitHub.
+3. ChatGPT reviewed repository state without relying on Gemini conversation.
+4. ChatGPT identified both successful UI work and memory drift.
 
-This is positive evidence for repository-mediated cross-AI continuation, but repeated cycles are still required before making a framework-wide claim.
+### Test 2 — INT-001
+
+1. ChatGPT prepared factual baseline and task memory in GitHub.
+2. Human synchronized GitHub → AI Studio.
+3. Gemini produced the API contract and handoff.
+4. Human synchronized result → GitHub.
+5. ChatGPT independently audited the contract against source evidence.
+6. Review identified semantic overreach before it reached production code and created a repository-level correction gate.
+
+This is stronger evidence for repository-mediated multi-AI work than simple continuation alone: the second AI acted as an independent reviewer, not merely a summarizer.
 
 ## Release-lifecycle evidence
-
-Track these milestones:
 
 | Milestone | Date | Evidence | Status |
 |---|---|---|---|
@@ -124,8 +118,10 @@ Track these milestones:
 | AISDD bootstrap in GitHub | 2026-10-15 | C001 | Done |
 | Bidirectional GitHub ↔ AI Studio synchronization | 2026-10-15 | C002-SYNC | Verified; manual trigger required |
 | First repository-memory-driven implementation | 2026-10-15 | C002-B | Done; exact successful PML still to classify |
-| First contract-discovery cycle | TODO | INT-001 | Prepared |
-| First real API integration | TODO | TODO | Pending |
+| First contract-discovery cycle | 2026-10-15 | C003 / INT-001 | Done; reviewer corrections gated before implementation |
+| First cross-AI semantic review gate | 2026-10-15 | C003-REVIEW | Done |
+| Android DTO/mapper/API boundary | TODO | INT-002 | Prepared |
+| First real backend/API integration | TODO | TODO | Pending |
 | First installed device build | TODO | TODO | Pending |
 | First internal distribution build | TODO | TODO | Pending |
 | First post-release task | TODO | TODO | Pending |
@@ -135,3 +131,5 @@ Track these milestones:
 Do not convert a single successful cycle into a framework claim.
 
 FreteOps observations should remain case evidence until the minimum validation window is reached or an early-exception safety problem is demonstrated.
+
+Prompt maturity and output correctness must remain separate metrics: a minimal prompt can successfully deliver project context while the model still makes a semantic mistake that an acceptance/review stage catches.
