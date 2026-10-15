@@ -11,8 +11,9 @@ A cycle should represent one meaningful project task or one AISDD workflow exper
 | C000 | 2026-10-15 | Initial Android scaffold | Gemini / AI Studio | Human + ChatGPT | 0 | Completed | No | Long manual prompt carried product, stack, UI, and architecture context. This is the pre-AISDD baseline. |
 | C001 | 2026-10-15 | AISDD project-memory bootstrap | ChatGPT | Human | N/A | Prepared | Yes | Repository docs introduced immediately after first prototype. No product code change intended. |
 | C002-A | 2026-10-15 | UX-001 startup attempt | Gemini / AI Studio | Human + ChatGPT | 4 | Context unavailable before execution | N/A | Gemini correctly reported that `docs/START_HERE.md` and `docs/04_NEXT_TASK.md` were absent from its active workspace. PML was therefore not evaluated because repository memory was unavailable to the implementer. |
-| C002-SYNC | 2026-10-15 | Discover inbound GitHub synchronization path | Gemini / AI Studio | Human + ChatGPT | N/A | Capability reported; verification pending | N/A | Gemini reported that the execution environment has `git` and `curl` and can download/synchronize repository files. FreteOps is private, so an authenticated read path is required. Do not count this as a product task or PML attempt. |
-| C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 planned after safe sync | Pending | Pending | First validate an explicit inbound sync of AISDD docs without overwriting newer local code. Then retry the minimal repository-driven startup prompt without adding task explanation. |
+| C002-SYNC | 2026-10-15 | Validate GitHub ↔ AI Studio synchronization | Human + AI Studio | ChatGPT | N/A | Verified | N/A | Bidirectional synchronization is available through the AI Studio/GitHub integration, but it is manually triggered by the human owner. Changes do not propagate automatically. |
+| C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 intended | Completed | Yes | After project memory became available in the AI Studio workspace, Gemini completed UX-001, updated project docs/handoff, and published the result to GitHub. Exact successful PML remains unclaimed until the final prompt evidence for this retry is preserved. |
+| C003-PREP | 2026-10-15 | Prepare INT-001 SSW 101 contract discovery | ChatGPT | Human | N/A | Prepared | Yes | FreteOps repository received an observed SSW 101 baseline, strengthened acceptance criteria, file index updates, and a sync preflight. Gemini can consume these changes after the human manually triggers AI Studio synchronization. |
 
 ## Required fields for future cycles
 
@@ -31,7 +32,8 @@ When adding a cycle, record:
 - any repeated context that still had to be supplied manually;
 - any hallucination, scope drift, or unnecessary implementation;
 - whether the next AI could continue from repository memory alone;
-- whether the implementing environment actually had access to synchronized repository memory.
+- whether the implementing environment actually had access to synchronized repository memory;
+- whether synchronization was automatic or required a human action.
 
 ## Cycle closure rule
 
@@ -60,3 +62,5 @@ Successful PML: 2
 The failure is useful evidence.
 
 If the AI cannot access or synchronize the repository memory at all, classify the attempt as context/environment-blocked rather than as a PML failure. PML measures how much manual task context is needed when the documented context is actually available.
+
+A manual synchronization click is an environment-delivery step, not manual task context. Do not lower PML merely because the human had to synchronize the workspace before execution.
