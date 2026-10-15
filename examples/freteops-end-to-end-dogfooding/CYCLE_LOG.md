@@ -10,7 +10,8 @@ A cycle should represent one meaningful project task or one AISDD workflow exper
 |---|---|---|---|---|---:|---|---:|---|
 | C000 | 2026-10-15 | Initial Android scaffold | Gemini / AI Studio | Human + ChatGPT | 0 | Completed | No | Long manual prompt carried product, stack, UI, and architecture context. This is the pre-AISDD baseline. |
 | C001 | 2026-10-15 | AISDD project-memory bootstrap | ChatGPT | Human | N/A | Prepared | Yes | Repository docs introduced immediately after first prototype. No product code change intended. |
-| C002 | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 planned | Pending | Pending | Intended startup prompt is repository-driven: read `START_HERE.md`, execute `04_NEXT_TASK.md`. |
+| C002-A | 2026-10-15 | UX-001 startup attempt | Gemini / AI Studio | Human + ChatGPT | 4 | Environment-blocked before execution | N/A | Gemini correctly reported that `docs/START_HERE.md` and `docs/04_NEXT_TASK.md` were absent from its workspace. AI Studio can publish workspace changes to GitHub but does not read/synchronize repository changes back into the active project. PML was therefore not evaluated: repository memory was unavailable to the implementer. |
+| C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 planned after workspace bootstrap | Pending | Pending | First synchronize the AISDD project docs into the AI Studio workspace. Then retry the minimal repository-driven startup prompt without adding task explanation. |
 
 ## Required fields for future cycles
 
@@ -28,7 +29,8 @@ When adding a cycle, record:
 - whether handoff was updated;
 - any repeated context that still had to be supplied manually;
 - any hallucination, scope drift, or unnecessary implementation;
-- whether the next AI could continue from repository memory alone.
+- whether the next AI could continue from repository memory alone;
+- whether the implementing environment actually had access to the repository memory it was instructed to read.
 
 ## Cycle closure rule
 
@@ -55,3 +57,5 @@ Successful PML: 2
 ```
 
 The failure is useful evidence.
+
+If the AI cannot access the repository memory at all, classify the attempt as `environment-blocked` rather than as a PML failure. PML measures how much manual task context is needed when the documented context is actually available.
