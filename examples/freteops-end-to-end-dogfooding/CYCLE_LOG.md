@@ -1,0 +1,57 @@
+# FreteOps Dogfooding Cycle Log
+
+This log records execution cycles, not general conversation history.
+
+A cycle should represent one meaningful project task or one AISDD workflow experiment.
+
+## Log
+
+| Cycle | Date | Task | Implementer | Reviewer | Attempted PML | Result | Handoff updated? | Notes |
+|---|---|---|---|---|---:|---|---:|---|
+| C000 | 2026-10-15 | Initial Android scaffold | Gemini / AI Studio | Human + ChatGPT | 0 | Completed | No | Long manual prompt carried product, stack, UI, and architecture context. This is the pre-AISDD baseline. |
+| C001 | 2026-10-15 | AISDD project-memory bootstrap | ChatGPT | Human | N/A | Prepared | Yes | Repository docs introduced immediately after first prototype. No product code change intended. |
+| C002 | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 planned | Pending | Pending | Intended startup prompt is repository-driven: read `START_HERE.md`, execute `04_NEXT_TASK.md`. |
+
+## Required fields for future cycles
+
+When adding a cycle, record:
+
+- task ID;
+- date;
+- implementing AI/tool;
+- reviewing AI/person;
+- prompt text or prompt class when relevant;
+- attempted PML;
+- successful PML;
+- files/contracts changed;
+- acceptance result;
+- whether handoff was updated;
+- any repeated context that still had to be supplied manually;
+- any hallucination, scope drift, or unnecessary implementation;
+- whether the next AI could continue from repository memory alone.
+
+## Cycle closure rule
+
+A product cycle is not considered complete for dogfooding purposes until:
+
+1. implementation has stopped;
+2. acceptance checks were performed or explicitly marked not tested;
+3. current state is accurate;
+4. decisions or known issues were updated if affected;
+5. `07_HANDOFF.md` reflects what the next session needs;
+6. the next task is singular and executable.
+
+## Prompt evidence rule
+
+Do not claim a PML level because the prompt was short.
+
+Record the highest level only when the task was completed safely at that level.
+
+If a short prompt fails and manual context must be added, record both:
+
+```txt
+Attempted PML: 4
+Successful PML: 2
+```
+
+The failure is useful evidence.
