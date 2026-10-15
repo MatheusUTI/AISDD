@@ -14,6 +14,8 @@ A cycle should represent one meaningful project task or one AISDD workflow exper
 | C002-SYNC | 2026-10-15 | Validate GitHub ↔ AI Studio synchronization | Human + AI Studio | ChatGPT | N/A | Verified | N/A | Bidirectional synchronization is available through the AI Studio/GitHub integration, but it is manually triggered by the human owner. Changes do not propagate automatically. |
 | C002-B | 2026-10-15 | UX-001 — legibility, contrast, and visual hierarchy | Gemini / AI Studio | Human + ChatGPT | 4 intended | Completed | Yes | After project memory became available in the AI Studio workspace, Gemini completed UX-001, updated project docs/handoff, and published the result to GitHub. Exact successful PML remains unclaimed until the final prompt evidence for this retry is preserved. |
 | C003-PREP | 2026-10-15 | Prepare INT-001 SSW 101 contract discovery | ChatGPT | Human | N/A | Prepared | Yes | FreteOps repository received an observed SSW 101 baseline, strengthened acceptance criteria, file index updates, and a sync preflight. Gemini can consume these changes after the human manually triggers AI Studio synchronization. |
+| C003 | 2026-10-15 | INT-001 — specify public SSW 101 API contract | Gemini / AI Studio | Human + ChatGPT | 4 | Completed with reviewer corrections required | Yes | Gemini executed from repository memory with a minimal startup prompt, created `11_SSW101_API_CONTRACT.md`, updated architecture/acceptance/handoff, and advanced to INT-002. No functional APK code changed. |
+| C003-REVIEW | 2026-10-15 | Cross-AI audit of INT-001 | ChatGPT | Human | N/A | Review gate added | Yes | Independent review found semantic risks before implementation: wrong series assumption, unsafe `EM_TRANSITO` fallback, synthetic occurrence/current-unit fallbacks, excessive non-null assumptions, and invented backend URL example. `12_INT001_REVIEW_GATE.md` now blocks INT-002 from encoding these assumptions. |
 
 ## Required fields for future cycles
 
@@ -64,3 +66,5 @@ The failure is useful evidence.
 If the AI cannot access or synchronize the repository memory at all, classify the attempt as context/environment-blocked rather than as a PML failure. PML measures how much manual task context is needed when the documented context is actually available.
 
 A manual synchronization click is an environment-delivery step, not manual task context. Do not lower PML merely because the human had to synchronize the workspace before execution.
+
+A task may use PML-4-sized prompting and still fail acceptance for semantic reasons. Record prompt maturity and output quality separately rather than hiding review findings by lowering the PML label automatically.
