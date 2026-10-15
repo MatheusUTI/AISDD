@@ -17,6 +17,14 @@ Each example should show at least one of:
 ## Dogfooding cases
 
 - `casa-em-dia-recovery-dogfooding` — public Recovery Mode validation case based on a real Android project, without proprietary source code.
+- `freteops-end-to-end-dogfooding` — active near-greenfield Android case tracked from the first development day through cross-AI execution, prompt maturity, integrations, and release milestones.
+
+The cases intentionally validate different adoption paths:
+
+| Case | Primary validation |
+|---|---|
+| Casa em Dia | Can Recovery Mode reconstruct and stabilize an existing AI-assisted project? |
+| FreteOps | Can AISDD guide a new AI-assisted product from early scaffold to release while prompts shrink and multiple AIs collaborate? |
 
 ## Example quality rule
 
