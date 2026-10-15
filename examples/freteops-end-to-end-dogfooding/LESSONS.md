@@ -24,7 +24,7 @@ Framework proposal
 
 **Date:** 2026-10-15  
 **Status:** early observation  
-**Evidence:** initial scaffold required a long prompt; the next planned implementation task can be expressed as `Read docs/START_HERE.md. Execute docs/04_NEXT_TASK.md.`
+**Evidence:** initial scaffold required a long prompt; later tasks can be expressed primarily through repository instructions such as `Read docs/START_HERE.md. Execute docs/04_NEXT_TASK.md.`
 
 **What this may validate:**
 
@@ -34,9 +34,9 @@ Framework proposal
 
 **What is not proven yet:**
 
-- that Gemini can complete the task safely from the short prompt;
-- that documentation remains accurate after several cycles;
-- that prompt size stays low as integrations become more complex.
+- that prompt size stays low as integrations become more complex;
+- that documentation remains accurate over many cycles;
+- that equivalent behavior repeats across other AI environments.
 
 ### OBS-002 — A generated project benefits from an immediate factual audit
 
@@ -75,69 +75,105 @@ The AISDD repository should contain framework-validation evidence.
 
 This avoids contaminating the product with framework research while preserving evidence for AISDD evolution.
 
-### OBS-005 — Repository-driven execution depends on actual repository access, not only UI integration
+### OBS-005 — Repository-driven execution depends on synchronized workspace state
 
 **Date:** 2026-10-15  
-**Status:** revised observation / verification pending
+**Status:** verified for this environment
 
-The first PML-4 startup attempt did not fail because the task documentation was insufficient. Gemini correctly reported that `docs/START_HERE.md` and `docs/04_NEXT_TASK.md` were absent from its active workspace.
+The first PML-4 startup attempt did not fail because task documentation was insufficient. Gemini correctly reported that the AISDD files were absent from its active workspace.
 
-Our first interpretation was that AI Studio supported only:
-
-```txt
-AI Studio workspace → GitHub
-GitHub -/→ active AI Studio workspace
-```
-
-A later direct capability check changed that understanding. Gemini reported that the AI Studio execution environment has `git` and `curl` available and can explicitly download/synchronize files from GitHub. For a private repository it requests authentication, such as a read-scoped GitHub token.
-
-This means the UI-level GitHub integration may still be publish-oriented, while the execution environment itself may provide an explicit pull path:
+The actual AI Studio/GitHub behavior was later verified by the project owner:
 
 ```txt
 GitHub
-  ↓ explicit git/curl sync
+   ⇅ manual sync action in AI Studio
 AI Studio workspace
-  ↓ implementation
-GitHub
 ```
 
-**Important:** this inbound path is reported by Gemini but is not yet considered validated until an actual authenticated synchronization succeeds without corrupting or replacing local project state.
+Synchronization works in both directions, but requires an explicit human click. Changes made on either side are not assumed to propagate automatically.
 
 **Immediate workflow implication for FreteOps:**
 
 - keep GitHub as the canonical project memory;
-- before an AISDD-controlled cycle, explicitly synchronize the required repository memory into AI Studio;
-- avoid pasting long-lived credentials into prompts;
-- use the narrowest practical read-only, repository-scoped authentication mechanism for inbound synchronization;
-- after sync, retry the minimal PML-4 prompt without manually repeating the task.
+- trigger synchronization before Gemini begins an AISDD cycle;
+- let Gemini execute from the synchronized repository state;
+- publish/synchronize the resulting changes back before another AI reviews them;
+- do not paste repository content manually unless the normal sync mechanism fails.
 
 **Potential framework implication:**
 
-AISDD may benefit from a small environment preflight that distinguishes:
+AISDD may benefit from an environment preflight that distinguishes:
 
 1. repository memory exists;
-2. the current AI environment can read it;
-3. the local working copy is synchronized with it.
+2. the AI environment can receive it;
+3. the working copy is actually synchronized;
+4. synchronization is automatic or human-triggered.
 
-This is not yet a core-rule change. More evidence is needed across tools.
+This is not yet a universal core rule. More evidence is needed across tools.
 
-### OBS-006 — Explicit sync may preserve multi-AI project ownership better than manual file copying
+### OBS-006 — Manual synchronization can still support a strong shared-memory boundary
 
 **Date:** 2026-10-15  
-**Status:** hypothesis to test
+**Status:** positive case evidence
 
-If the reported git/curl path works, ChatGPT can continue maintaining reviewed project memory in GitHub while Gemini consumes the same memory before implementation. This would remove the need for manual `docs/` uploads and would make the repository a genuinely shared handoff boundary between AI systems.
+The need for a human synchronization click did not force task context back into chat prompts.
 
-The key risk is synchronization safety: inbound sync must not silently overwrite newer AI Studio code or local uncommitted changes.
+ChatGPT can update canonical project memory in GitHub; the human owner synchronizes; Gemini consumes that state; Gemini publishes its result; GitHub then becomes available to ChatGPT for review.
 
-A safe pattern should therefore inspect repository/workspace state before pulling and, initially, synchronize only the required AISDD docs rather than blindly replacing the entire project tree.
+This preserves the intended shared-memory pattern:
+
+```txt
+ChatGPT / architecture review
+        ↓
+      GitHub
+        ⇅ human sync
+    AI Studio / Gemini
+        ↓
+      GitHub
+        ↓
+ChatGPT / next review
+```
+
+The synchronization action is operational plumbing, not project specification.
+
+### OBS-007 — Human-triggered sync acts as a visible consistency gate
+
+**Date:** 2026-10-15  
+**Status:** hypothesis to observe over future cycles
+
+A manual sync step is a small friction cost, but it also makes the moment of context transfer explicit.
+
+That may be useful because the owner can deliberately control when:
+
+- GitHub changes enter AI Studio;
+- AI Studio changes become canonical in GitHub;
+- another AI is allowed to review or modify the new state.
+
+Potential downside: forgetting to synchronize can recreate stale-context failures. The project therefore records sync preflight in `START_HERE.md`.
+
+Do not generalize this as a preferred workflow yet; automatic synchronization may be superior in other environments.
+
+### OBS-008 — Successful implementation can still introduce memory drift
+
+**Date:** 2026-10-15  
+**Status:** early observation
+
+UX-001 was implemented successfully, but the first post-task documentation update contained small inconsistencies: stale commit reference, a completed task still occupying `NEXT_TASK`, incomplete general acceptance check reconciliation, and terminology drift around the AISDD name.
+
+**Potential implication:**
+
+Cycle closure should evaluate not only product behavior but also internal consistency of project memory.
+
+This is currently case evidence, not a new mandatory AISDD phase.
 
 ## Candidate improvements
 
-Do not promote OBS-005 or OBS-006 into universal requirements yet. Collect more evidence from environments with:
+Do not promote these observations into universal requirements yet. Collect more evidence from environments with:
 
-- full Git repository access;
-- publish-only UI integration plus shell/network access;
+- automatic bidirectional repository synchronization;
+- human-triggered bidirectional synchronization;
+- full local Git access;
+- publish-only integration;
 - uploaded/static project snapshots;
 - local CLI agents.
 
@@ -147,5 +183,6 @@ Wait for multiple implementation cycles before proposing changes to:
 - PML definitions;
 - required project documents;
 - handoff rules;
+- environment preflight rules;
 - response format;
 - dogfooding metrics.
